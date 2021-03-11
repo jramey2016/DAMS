@@ -40,7 +40,6 @@ exports.registration = async (req,res) => { //move on past authenticate
         let hashpass = await bcrypt.hash(password,8); //hash the password 8 times
         console.log(hashpass);
         
-       
     });  
     
     DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password:password, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info
@@ -48,7 +47,7 @@ exports.registration = async (req,res) => { //move on past authenticate
             console.log(error)
         }else{
             console.log(results)
-            return res.redirect('/')
+            return res.redirect('/login')
         }
     })
 }

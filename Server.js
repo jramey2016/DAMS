@@ -9,7 +9,7 @@ dotenv.config({ path: './.env' }) //path info for database into the .env file
 
 const app = express();
 
-
+//this is for testing a commit and push.
 //connect to our database
 const DB = mysql.createConnection({
     host: process.env.HOST, //connecting to local host since were working locally 
