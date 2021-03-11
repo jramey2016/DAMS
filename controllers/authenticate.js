@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken') //import cookies
 const bcrypt = require('bcryptjs')
 const {promisify} = require ('util')
 
-
 //connect to our database
 const DB = mysql.createConnection({
     host: process.env.HOST, //connecting to local host since were working locally 
@@ -12,8 +11,6 @@ const DB = mysql.createConnection({
     database: process.env.DATABASE
 });
 //on Browser ===> http://localhost/phpmyadmin/
-
-
 
 exports.registration = async (req,res) => { //move on past authenticate
     const name = req.body.UserName; //get username
@@ -42,7 +39,7 @@ exports.registration = async (req,res) => { //move on past authenticate
         
     });  
     
-    DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password:password, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info
+    DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password:password, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info to the users table
         if(error){
             console.log(error)
         }else{
@@ -52,7 +49,6 @@ exports.registration = async (req,res) => { //move on past authenticate
     })
 }
     
-
 exports.login = async (req,res) => {
     try{
         const {email, password, role} = req.body;
@@ -64,38 +60,62 @@ exports.login = async (req,res) => {
                     message: 'The email, password or selected role is incorrect'
                 })
              }else{
+                
+            if((results[0].role && role) == 'Admin'){ //making sure information all matches before directing user to thier home page based on thier role.
                 const id = results[0].id; //cookies are bullshit.
-                const token = jwt.sign({id: id}, process.env.JWT_SECRET, {
+                const token = jwt.sign({id: id}, process.env.JWT_SECRET, { //we will asign a specific cookie to the admin
                     expiresIn: process.env.JWT_EXPIRES_IN 
                 })
-                console.log("The user token is" + token) //display the users token
+                console.log("The admin token is" + token) //display the users token
                 const cookieOptions = {
                     expires: new Date(
-                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 //MS
+                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 //When the cookie will expire
                     ),
                     httpOnly: true
                 }
-                res.cookie('jwt', token, cookieOptions);
-                
-            if((results[0].role && role) == 'Admin'){ //making sure information all matches before directing user to thier home page based on thier role.
-                 res.status(200).redirect('/admin')
+                 res.cookie('jwt', token, cookieOptions);
+
+                 res.status(200).redirect('/admin') //redirect to the admin page 
              }
-             else if((results[0].role && role) == 'Donor'){
+
+             else if((results[0].role && role) == 'Donor'){ //assigning this cookie will be similar to the role above
+                 const id_donor = results[0].id; 
+                 const token_for_donor = jwt.sign({id: id_donor}, process.env.JWT_SECRET_DONOR,{
+                    expiresIn: process.env.JWT_EXPIRES_IN
+                 })
+                 console.log("The donor token is" + token_for_donor)
+                 const cookieOptionsDonor = {
+                     expires: new Date(
+                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 //30 days
+                     )
+                 }
+                 res.cookie('jwt', token_for_donor, cookieOptionsDonor)
                  res.status(200).redirect('/donor')
              }
-             else if((results[0].role && role) == 'Recipient'){
+
+             else if((results[0].role && role) == 'Recipient'){ //assigning this cookie will be similar to the role above
+                 const id_recipient = results[0].id;
+                 const token_for_recipient = jwt.sign({id: id_recipient}, process.env.JWT_SECRET_RECEP,{
+                     expiresIn: process.env.JWT_EXPIRES_IN
+                 })
+                 console.log("The recipient token is" + token_for_recipient)
+                 const cookieOptionsRecipient = {
+                     expires: new Date(
+                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                     )
+                 }
+                 res.cookie('jwt', token_for_recipient, cookieOptionsRecipient)
                  res.status(200).redirect('/recipient')
              } else{
-                 res.status(200).redirect('/login')
+                 res.status(200).redirect('/login') //if all else fails redirect them to the home page
              }
-        }})
-         
-    }catch(error){
+        }})  
+    }catch(error){ //catch any errors and log them to the console
         console.log(error);
     }
 }
 
-exports.isLoggedIn = async(req,res,next) =>{ //seriously screw cookies
+exports.is_LoggedIn_As_Admin = async(req,res,next) =>{ //work on continusly checking if the user is logged in when they redirect to a page that has private acess.
     console.log(req.cookies);
     if(req.cookies.jwt){
         try{
@@ -104,27 +124,74 @@ exports.isLoggedIn = async(req,res,next) =>{ //seriously screw cookies
             console.log(decoded);
 
             //check if the user is still existing we can use this to boot users out if they erase thier cookies or are timed out
-            DB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error, result) => {
+            DB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error, result) => { //query from the database
+                if(!result){ //if not the result
+                    return next(); //move forward
+                }
+                req.user = result[0]; //if we move past the first if we can still pass the users results and move forward
+                return next();
+            });
+        }catch(error){ //catch any errors
+            console.log(error)
+            return next()
+        }
+    }else{
+        next(); 
+    }
+}
+
+exports.is_LoggedIn_As_Donor = async(req,res,next) => { //this will follow the same flow as is_LoggedIn_As_Admin
+    console.log(req.cookies);
+    if(req.cookies.jwt){
+        try{
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET_DONOR);
+            console.log(decoded);
+
+            DB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error,result) => {
                 if(!result){
                     return next();
                 }
                 req.user = result[0];
                 return next();
-            });
+            })
         }catch(error){
             console.log(error)
-            return next()
+            return next ()  
+        }
+        }else{
+            next();
+        }
+    }
+
+exports.is_LoggedIn_As_Recipient = async(req,res,next) => {
+    console.log(req.cookies);
+    if(req.cookies.jwt){
+        try{
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET_RECEP);
+            console.log(decoded);
+
+            DB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error,result) => {
+                if(!result){
+                    return next();
+                }
+                req.user = result[0]
+                return next();
+            })
+        }catch(error){
+            console.log(error);
+            return next();
         }
     }else{
-    next(); 
+        next();
     }
 }
+
 
 //time to logout
 exports.logout = async (req,res) => {
     res.cookie('jwt', 'leave',{
-        expires: new Date(Date.now() + 1000), //time for your cookie to expire 
+        expires: new Date(Date.now() + 1000), //make the users cookie expire instantly 
         httpOnly: true
     });
-    res.status(200).redirect('/') //redirect to the homepage.
+    res.status(200).redirect('/'); //redirect to the homepage.
 }

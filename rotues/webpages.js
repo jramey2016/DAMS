@@ -15,7 +15,7 @@ router.get('/login', (req,res) => {
     res.render('login')
 }) //set up router to the login page.
 
-router.get('/admin', authenticateController.isLoggedIn, (req,res) => { //need middle ware authentification
+router.get('/admin', authenticateController.is_LoggedIn_As_Admin, (req,res) => { //need middle ware authentification we will create a specific middleware to ensure user is thier specifc role for all roles.
     if(req.user){
         res.render('admin', {
             user: req.user //we can now have thier name, password, etc. passed through different routes
@@ -26,7 +26,7 @@ router.get('/admin', authenticateController.isLoggedIn, (req,res) => { //need mi
     
 }) //set up router to the admin page
 
-router.get('/donor',authenticateController.isLoggedIn, (req,res) => {
+router.get('/donor',authenticateController.is_LoggedIn_As_Donor, (req,res) => {
     if(req.user){
     res.render('donor', {
         user: req.user
@@ -36,7 +36,7 @@ router.get('/donor',authenticateController.isLoggedIn, (req,res) => {
     }
 }) //set up router to the donor page
 
-router.get('/recipient', authenticateController.isLoggedIn, (req,res) =>{ //middle for autentification
+router.get('/recipient', authenticateController.is_LoggedIn_As_Recipient, (req,res) =>{ //middle for autentification
     if(req.user){
         res.render('recipient', {
             user: req.user
