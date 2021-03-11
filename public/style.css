@@ -1,0 +1,47 @@
+nav{
+    background-color: lightblue;
+    color: gray;
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li{
+    list-style: none
+}
+
+nav li a{
+    color:gray;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+
+nav li a:hover {
+    color: purple
+}
+
+.avatar-ctn {
+    background-color: lightblue;
+    text-align: center;
+}
+
+.avatar {
+    width: 65%;
+    border-bottom: 1px solid rbga(0,0,0,0,0.125);
+}
+
+.photo-ctn {
+    background-color: black;
+    text-align: center;
+}
+.photo{
+    width: 65%;
+    border-bottom: 1px solid rbga(0,0,0,0,0.125);;
+}
