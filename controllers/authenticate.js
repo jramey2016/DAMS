@@ -69,7 +69,7 @@ exports.login = async (req,res) => {
                 const token = jwt.sign({id: id}, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN 
                 })
-                console.log("The user token is" + token)
+                console.log("The user token is" + token) //display the users token
                 const cookieOptions = {
                     expires: new Date(
                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 //MS
