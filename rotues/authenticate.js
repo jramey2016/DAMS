@@ -7,4 +7,6 @@ router.post('/register', authenticateController.registration) //can only access 
 router.post('/login', authenticateController.login) //controller for log in authentification.
 
 router.get('/logout', authenticateController.logout) //logout controller
+
+//router.post('/createEvent',authenticateController.createEvent)
 module.exports = router

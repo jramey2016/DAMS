@@ -51,8 +51,15 @@ router.get('/learn', (req,res) => {
     res.render('learn')
 })
 
-router.get('/createEvent', (req,res) => {
-    res.render('createEvent')
-})//set up router for admin to create an event
+//router.get('/createEvent', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
+    //if(req.user){
+   // res.render('createEvent',{
+    //    user: req.user
+   // })
+   // }else{
+       // res.redirect('login')
+   //}
+//})//set up router for admin to create an event
+
 
 module.exports = router

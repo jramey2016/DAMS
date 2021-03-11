@@ -34,20 +34,23 @@ exports.registration = async (req,res) => { //move on past authenticate
                 message: "These passwords do not match"
             });
         }
-        let hashpass = await bcrypt.hash(password,8); //hash the password 8 times
-        console.log(hashpass);
+        let hashedpassword = await bcrypt.hash(password,8); //hash the password 8 times
+        console.log(hashedpassword);
         
-    });  
-    
-    DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password:password, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info to the users table
-        if(error){
-            console.log(error)
-        }else{
-            console.log(results)
-            return res.redirect('/login')
-        }
-    })
+        DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password: hashedpassword, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info to the users table
+            if(error){
+                console.log(error)
+            }else{
+                console.log(results)
+                return res.redirect('/login')
+            }
+        })
+    });
 }
+
+
+    
+ 
     
 exports.login = async (req,res) => {
     try{
@@ -114,6 +117,7 @@ exports.login = async (req,res) => {
         console.log(error);
     }
 }
+
 
 exports.is_LoggedIn_As_Admin = async(req,res,next) =>{ //work on continusly checking if the user is logged in when they redirect to a page that has private acess.
     console.log(req.cookies);

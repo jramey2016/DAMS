@@ -39,7 +39,7 @@ DB.connect((error) => {
 //set up the new routes go to routes folder and see what routes can be rendered.
 app.use('/', require('./rotues/webpages'))
 app.use('/authenticate', require('./rotues/authenticate'))
-app.use('/createEvent',require('./rotues/createEvent'))
+
 
 //Listen for port 3000 and display once you are connected.
 app.listen(3000, () => {
