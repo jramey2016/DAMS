@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/style.css">
     <title>Admin Home</title>
 </head>
-<body>
+<body style = "background-color: lightgray; text-align: center">
     <nav>
         <h4>{{user.UserName}}'s Home Page</h4>
         <ul>
             <li><a href= "/createEvent"> Create An Event </a></li>
-            <li><a href = "/viewEvent">Current Events</a></li>
+            <li><a href = "/viewEvent">Event Page</a></li>
             <li><a href = "/">Donor Queue</a></li>
             <li><a href="/"> Request Queue </a></li>
             <li><a href="/authenticate/logout"> Logout </a></li>
@@ -24,15 +24,17 @@
         <div class = "row">
             <div class = "col-4">
                  <div class = "card">
+                     <div class = "card-header"></div>
             <div class = "avatar-ctn">
                 <img src = "/default.png" class = "avatar" alt = "user pfp">
             </div>
         <div class = "card-body">
             <h5 class = "card-title"> Hey {{user.UserName}}! </h5>
                 <p class = "card-text">Your role is a/an: {{user.role}}</p>
-
-                <a href ="#" class = "btn btn-primary">{{user.email}}</a>
+                <p class = "card-text">Zipcode: {{user.zipcode}}</p>
+                <a href ="#" class = "btn btn-primary">Email: {{user.email}}</a>
                 </div>
+                <div class = "card-footer"></div>
               </div>
             </div>
             <div class ="col-8">
@@ -41,13 +43,14 @@
                       {{user.UserName}}'s Profile Page
                     </div>  
                     <div class = "card-body">
-                        <h5 class = "card-title"> Your role as an {{user.role}} </h5>
-                        <p class = "card-text"> can add more information here later </p>
-                        <a href = "#" class = "btn btn-primary">Check Out the Event Page!</a>
+                        <h5 class = "card-title"> Your role as an {{user.role}}: </h5>
+                        <p class = "card-text"> Our admin role is reserved for those who do not have disposables on hand but would still like to voulunteer and offer a helping hand. With this role, you will be able to manually match a donor-recipient pair, as well as create events for potential and occuring disaster hotspots. </p>
+                        <a href = "/viewEvent" class = "btn btn-primary">Check Out the Event Page!</a>
                     </div>
                     <div class = "card-footer text muted">
-                      <h5>Your id is: #{{user.id}}</h5>
+                      <h5>Your User ID is: #{{user.id}}</h5>
                     </div>
+                    
                 </div>
             </div>
         </div>          

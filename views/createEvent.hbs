@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="/style.css">
     <title>Create An Event</title>
 </head>
-<body>
+<body style = "background-color: lightgray; text-align: left">
     <nav>
         <h4>Create An Event</h4>
         <ul>
             <li><a href="/admin"> Profile </a></li>
+            <li><a href="/viewEvent"> Event Page </a></li>
             <li><a href= "/"> Donor Queue </a></li>
             <li><a href="/"> Request Queue </a></li>
             <li><a href="/"> Logout </a></li>
@@ -27,10 +28,10 @@
         <div class="card-body">
      <form action = "/createEvent/createEvent" method = "POST">
                 <div class="form-group">
-            <label for="EventName">Event Organizer</label>
-            <input type="EventName" class="form-control" id="EventName" name= "EventName" placeholder="Enter your own name or who is organizing the event" required>
+            <label for="EventName">Name of the Event</label>
+            <input type="EventName" class="form-control" id="EventName" name= "EventName" required>
                 </div>
-
+            <br>
                 <label for ="type">Select the Type of Event</label>
                 <select id = "type" class = "form-control" id = "type" name = "type" required >
                 <option> Fundraiser </option>
@@ -38,13 +39,20 @@
                 <option> Pandemic Relief</option>
                 <option> Voulunteer Oppurtuinity</option>   
                 </select>
-                
+         <br>       
+                 <label for="date">Events Date</label>
+            <input type="date" class="form-control" id="date" name = "date" required>
+
+        <br>
 
                 <label for="city">Locations City/Town</label>
             <input type="city" class="form-control" id="city" name = "city" placeholder= "Enter the City/Town" required>
-      
-                
-
+        <br>
+                 <div class="form-group">
+            <label for="description">Brief Description</label>
+                <textarea class="form-control" id="description" name = "description" rows="3" placeholder= "Limit to 100 characters"></textarea>
+                </div>
+        <br>
                 <label for ="state">Select State</label>
                 <select id = "state" class = "form-control" id = "state" name = "state" required>
                 <option> AL </option><option> AK </option><option> AZ </option><option> AR </option>
@@ -62,12 +70,15 @@
                 <option> WI </option><option> WY </option>
                 </select>
            
-
+        <br>
             <label for="eventzip">Enter Locations Zipcode</label>
             <input type="eventzip" class="form-control" id="eventzip" name = "eventzip" placeholder= "Enter the Locations Zipcode" required>
                 </div>
+
+        <br>
             <button type="create" class="btn btn-primary">Create Event</button>
         </form>
+         <div class = "card-footer text muted"></div>
              </div>
         </div>
     </div>      

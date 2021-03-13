@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/style.css">
     <title>Admin Home</title>
 </head>
-<body>
+<body style = "background-color: lightgray; text-align: center">
     <nav>
         <h4>{{user.UserName}}'s Home Page</h4>
         <ul>
@@ -22,15 +22,17 @@
         <div class = "row">
             <div class = "col-4">
                  <div class = "card">
+                     <div class = "card-header"></div>
             <div class = "avatar-ctn">
                 <img src = "/default.png" class = "avatar" alt = "user pfp">
             </div>
         <div class = "card-body">
             <h5 class = "card-title"> Hey {{user.UserName}}! </h5>
                 <p class = "card-text">Your role is a/an: {{user.role}}</p>
-
+                 <p class = "card-text">Zipcode: {{user.zipcode}}</p>
                 <a href ="#" class = "btn btn-primary">{{user.email}}</a>
                 </div>
+                <div class = "card-footer"></div>
               </div>
             </div>
 
@@ -41,7 +43,7 @@
                     </div>  
                     <div class = "card-body">
                         <h5 class = "card-title"> Your role as an {{user.role}} </h5>
-                        <p class = "card-text"> can add more information here later </p>
+                        <p class = "card-text"> Our recipient role is for those affected by natures fury. Those who are in need of assistance will be able to find pledged resources such as; food, clothing, shelter, medicines, medical help, and various common consoumables. Anyone who has this role will also be able to submit request based on thier current needs for a donor to fufill. </p>
                         <a href = "#" class = "btn btn-primary">Check Out the Event Page!</a>
                     </div>
                     <div class = "card-footer text muted">

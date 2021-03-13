@@ -2,6 +2,19 @@ const express = require('express')
 const { route } = require('./authenticate')
 const router = express.Router()
 const authenticateController = require('../controllers/authenticate')
+const { decodeBase64 } = require('bcryptjs')
+const mysql = require("mysql")
+
+
+
+//connect to our database
+const DB = mysql.createConnection({
+    host: process.env.HOST, //connecting to local host since were working locally 
+    user: process.env.USER,  //Bring in information from the env
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
+});
+//on Browser ===> http://localhost/phpmyadmin/
 
 router.get('/',(req,res) => {
     res.render('index') 
@@ -63,8 +76,15 @@ router.get('/createEvent',authenticateController.is_LoggedIn_As_Admin, (req,res)
 }) //set up the page for admins to create events
 
 
-router.get('/viewEvent', (req,res) => {
-    res.render('viewEvent')
+router.get('/viewEvent',authenticateController.is_LoggedIn_As_Admin, (req,res) => {
+   DB.query('SELECT * FROM events', (error, results) =>{ //get information from database 
+    for(var i = 0; i < results.length; i++) {  
+             events = results[i]
+            }
+            res.render('viewEvent', {
+                 event: events
+             })//set up page for users to view events
+   })
 })
 
 module.exports = router

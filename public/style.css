@@ -1,6 +1,6 @@
 nav{
-    background-color: lightblue;
-    color: gray;
+    background-color: black;
+    color: Gold;
     padding: 30px 60px;
     display: flex;
     justify-content: space-between;
@@ -17,18 +17,18 @@ nav li{
 }
 
 nav li a{
-    color:gray;
-    text-decoration: none;
+    color:gold;
+    text-decoration: underline;
     font-weight: bold;
     padding: 5px 8px;
 }
 
 nav li a:hover {
-    color: purple
+    color: white;
 }
 
 .avatar-ctn {
-    background-color: lightblue;
+    background-color: black;
     text-align: center;
 }
 
@@ -44,4 +44,8 @@ nav li a:hover {
 .photo{
     width: 65%;
     border-bottom: 1px solid rbga(0,0,0,0,0.125);;
+}
+
+.card{
+    background-color: rgb(238, 238, 238);
 }

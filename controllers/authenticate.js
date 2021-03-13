@@ -120,7 +120,6 @@ exports.login = async (req,res) => {
 
 
 exports.is_LoggedIn_As_Admin = async(req,res,next) =>{ //work on continusly checking if the user is logged in when they redirect to a page that has private acess.
-    console.log(req.cookies);
     if(req.cookies.jwt){
         try{
             //verify the users cookie token 
@@ -145,7 +144,6 @@ exports.is_LoggedIn_As_Admin = async(req,res,next) =>{ //work on continusly chec
 }
 
 exports.is_LoggedIn_As_Donor = async(req,res,next) => { //this will follow the same flow as is_LoggedIn_As_Admin
-    console.log(req.cookies);
     if(req.cookies.jwt){
         try{
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET_DONOR);
@@ -168,7 +166,6 @@ exports.is_LoggedIn_As_Donor = async(req,res,next) => { //this will follow the s
     }
 
 exports.is_LoggedIn_As_Recipient = async(req,res,next) => {
-    console.log(req.cookies);
     if(req.cookies.jwt){
         try{
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET_RECEP);

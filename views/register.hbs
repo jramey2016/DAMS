@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/style.css">
     <title>Register</title>
 </head>
-<body>
+<body style = "background-color: lightgray; text-align: left">
     <nav>
         <h4>Disaster Assistance Management System</h4>
         <ul>
@@ -29,25 +29,25 @@
             <label for="UserName">UserName</label>
             <input type="text" class="form-control" id="UserName" name= "UserName" placeholder="Enter your UserName" required>
                 </div>
-
+        <br>
                 <div class="form-group">
             <label for="email">Email Address </label>
             <input type="email" class="form-control" id="email" name = "email" placeholder= "Enter Your Email" required>
                 </div>
-
+        <br>
                 <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name = "password" placeholder= "Enter Your Password" required>
                 </div>
-
+        <br>
                  <div class="form-group">
             <label for="Confirmpassword">Confirm Password</label>
             <input type="password" class="form-control" id="Confirmpassword" name = "Confirmpassword" placeholder= "Enter Your Password" required>
                 </div>
-
+        <br>
             <label for="zipcode">zipcode</label>
             <input type="zipcode" class="form-control" id="zipcode" name = "zipcode" placeholder= "Enter Your Zipcode" required>
-               
+        <br>      
             <label for ="role">Select Your Role</label>
                 <select id = "role" class = "form-control" id = "role" name = "role" required>
                 <option> Admin</option>
@@ -59,6 +59,7 @@
         </form>
              </div>
         </div>
+        <div class = "card-footer"></div>
         {{#if message }}
             <h5 class= "alert alert-danger mt-3"> {{message}}</h5>
         {{/if}}
