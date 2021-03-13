@@ -3,6 +3,7 @@ const path = require('path')
 const mysql = require("mysql"); //mysql database
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
+const { allowedNodeEnvironmentFlags } = require("process");
 
 
 dotenv.config({ path: './.env' }) //path info for database into the .env file
@@ -38,7 +39,9 @@ DB.connect((error) => {
 
 //set up the new routes go to routes folder and see what routes can be rendered.
 app.use('/', require('./rotues/webpages'))
+app.use('/createEvent', require('./rotues/createEvent'))
 app.use('/authenticate', require('./rotues/authenticate'))
+
 
 
 //Listen for port 3000 and display once you are connected.

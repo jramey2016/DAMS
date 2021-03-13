@@ -7,6 +7,7 @@ router.get('/',(req,res) => {
     res.render('index') 
 }) //set up a route to main page.
 
+
 router.get('/register',(req,res) => {
     res.render('register') 
 }) //set up a route to main page.
@@ -51,15 +52,9 @@ router.get('/learn', (req,res) => {
     res.render('learn')
 })
 
-//router.get('/createEvent', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
-    //if(req.user){
-   // res.render('createEvent',{
-    //    user: req.user
-   // })
-   // }else{
-       // res.redirect('login')
-   //}
-//})//set up router for admin to create an event
+router.get('/createEvent', (req,res) => {
+    res.render('createEvent')   
+}) //set up the page for admins to create events
 
 
 module.exports = router

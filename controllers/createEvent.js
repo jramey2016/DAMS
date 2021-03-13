@@ -1,9 +1,7 @@
 const mysql = require("mysql") //set up mysql
-const jwt = require('jsonwebtoken') //import cookies
-const bcrypt = require('bcryptjs')
 
 //connect to our database
-const DB2 = mysql.createConnection({
+const DB = mysql.createConnection({
     host: process.env.HOST, //connecting to local host since were working locally 
     user: process.env.USER,  //Bring in information from the env
     password: process.env.PASSWORD,
@@ -14,15 +12,13 @@ const DB2 = mysql.createConnection({
 exports.create = (req,res) => {
   try{
   
-   const {EventName, type, city, state, zipcode} = req.body;
+   const {EventName, type, city, state, eventzip} = req.body;
    
-    
-
-   DB2.query('INSERT INTO events SET?', {EventName: EventName, city: city, state: state, zipcode: zipcode, type: 'admin'}, (error,results) => {
+   DB.query('INSERT INTO events SET ?', {EventName: EventName, type:type, city: city, state: state, eventzip: eventzip}, async (error,results) => {
        if(error){
            console.log(error)
        }else {
-           res.redirect('')
+           res.redirect('/admin')
        }
    })
 }catch(error){

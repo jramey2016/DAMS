@@ -34,7 +34,7 @@ exports.registration = async (req,res) => { //move on past authenticate
                 message: "These passwords do not match"
             });
         }
-        let hashedpassword = await bcrypt.hash(password,8); //hash the password 8 times
+        let hashedpassword = await bcrypt.hash(password, 8); //hash the password 8 times
         console.log(hashedpassword);
         
         DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password: hashedpassword, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info to the users table

@@ -8,5 +8,5 @@ router.post('/login', authenticateController.login) //controller for log in auth
 
 router.get('/logout', authenticateController.logout) //logout controller
 
-//router.post('/createEvent',authenticateController.createEvent)
+
 module.exports = router

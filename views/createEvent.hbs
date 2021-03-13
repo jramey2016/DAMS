@@ -25,7 +25,7 @@
              Event Form
         </div>
         <div class="card-body">
-     <form action = "/authenticate/register" method = "POST">
+     <form action = "/createEvent/createEvent" method = "POST">
                 <div class="form-group">
             <label for="EventName">Event Organizer</label>
             <input type="EventName" class="form-control" id="EventName" name= "EventName" placeholder="Enter your own name or who is organizing the event" required>
@@ -38,10 +38,11 @@
                 <option> Pandemic Relief</option>
                 <option> Voulunteer Oppurtuinity</option>   
                 </select>
+                
 
                 <label for="city">Locations City/Town</label>
             <input type="city" class="form-control" id="city" name = "city" placeholder= "Enter the City/Town" required>
-               
+      
                 
 
                 <label for ="state">Select State</label>
@@ -62,8 +63,8 @@
                 </select>
            
 
-            <label for="zipcode">Enter Locations Zipcode</label>
-            <input type="zipcode" class="form-control" id="zipcode" name = "zipcode" placeholder= "Enter the Locations Zipcode" required>
+            <label for="eventzip">Enter Locations Zipcode</label>
+            <input type="eventzip" class="form-control" id="eventzip" name = "eventzip" placeholder= "Enter the Locations Zipcode" required>
                 </div>
             <button type="create" class="btn btn-primary">Create Event</button>
         </form>
