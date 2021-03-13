@@ -52,9 +52,19 @@ router.get('/learn', (req,res) => {
     res.render('learn')
 })
 
-router.get('/createEvent', (req,res) => {
-    res.render('createEvent')   
+router.get('/createEvent',authenticateController.is_LoggedIn_As_Admin, (req,res) => { //still need middleware only an admin should be able to view this page.
+    if(req.user){
+    res.render('createEvent', {
+        user:req.user
+    })
+    }else{
+        res.redirect('login')
+    }
 }) //set up the page for admins to create events
 
+
+router.get('/viewEvent', (req,res) => {
+    res.render('viewEvent')
+})
 
 module.exports = router
