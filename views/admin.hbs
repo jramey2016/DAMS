@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/style.css">
     <title>Admin Home</title>
 </head>
-<body style = "background-color: lightgray; text-align: center">
+<body style = "background-color: rgb(225, 225, 225); text-align: left">
     <nav>
         <h4>{{user.UserName}}'s Home Page</h4>
         <ul>
@@ -31,8 +31,8 @@
         <div class = "card-body">
             <h5 class = "card-title"> Hey {{user.UserName}}! </h5>
                 <p class = "card-text">Your role is a/an: {{user.role}}</p>
-                <p class = "card-text">Zipcode: {{user.zipcode}}</p>
-                <a href ="#" class = "btn btn-primary">Email: {{user.email}}</a>
+                <p class = "card-text" >Zipcode: {{user.zipcode}}</p>
+                <p class = "card-text"> Email: {{user.email}}</p>
                 </div>
                 <div class = "card-footer"></div>
               </div>
@@ -45,7 +45,6 @@
                     <div class = "card-body">
                         <h5 class = "card-title"> Your role as an {{user.role}}: </h5>
                         <p class = "card-text"> Our admin role is reserved for those who do not have disposables on hand but would still like to voulunteer and offer a helping hand. With this role, you will be able to manually match a donor-recipient pair, as well as create events for potential and occuring disaster hotspots. </p>
-                        <a href = "/viewEvent" class = "btn btn-primary">Check Out the Event Page!</a>
                     </div>
                     <div class = "card-footer text muted">
                       <h5>Your User ID is: #{{user.id}}</h5>

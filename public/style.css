@@ -1,9 +1,10 @@
 nav{
     background-color: black;
     color: Gold;
-    padding: 30px 60px;
+    padding: 10px 80px;
     display: flex;
     justify-content: space-between;
+    height: 125px;
 }
 
 nav ul{
@@ -18,9 +19,10 @@ nav li{
 
 nav li a{
     color:gold;
-    text-decoration: underline;
     font-weight: bold;
-    padding: 5px 8px;
+    font-size: 20px;
+    padding: 20px 15px;
+    transition-duration: 0.4s;
 }
 
 nav li a:hover {
@@ -38,7 +40,7 @@ nav li a:hover {
 }
 
 .photo-ctn {
-    background-color: black;
+    background-color: gold;
     text-align: center;
 }
 .photo{
@@ -49,3 +51,30 @@ nav li a:hover {
 .card{
     background-color: rgb(238, 238, 238);
 }
+
+.btn{
+    background-color: gray;
+    transition-duration: 0.4s;
+    width: 1260px;
+    font-size: 20px;
+}
+
+.btn:hover{
+    background-color: gold;
+    color: black
+}
+
+.btn2{
+    background-color: gray;
+    transition-duration: 0.4s;
+    height: 40px;
+    font-size: 20px;
+}
+
+.btn2:hover{
+    background-color: gold;
+    color: black
+}
+
+
+

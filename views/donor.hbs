@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/style.css">
     <title>Admin Home</title>
 </head>
-<body style = "background-color: lightgray; text-align: center">
+<body style = "background-color: rgb(225, 225, 225); text-align: left">
     <nav>
         <h4>{{user.UserName}}'s Home Page</h4>
         <ul>
@@ -29,8 +29,8 @@
         <div class = "card-body">
             <h5 class = "card-title"> Hey {{user.UserName}}! </h5>
                 <p class = "card-text">Your role is a/an: {{user.role}}</p>
-                 <p class = "card-text">Zipcode: {{user.zipcode}}</p>
-                <a href ="#" class = "btn btn-primary">{{user.email}}</a>
+                <p class = "card-text">Zipcode: {{user.zipcode}}</p>
+                <p class = "card-text">Email: {{user.email}}</p>
                 </div>
                 <div class = "card-footer text muted"></div>
               </div>
@@ -44,7 +44,6 @@
                     <div class = "card-body">
                         <h5 class = "card-title"> Your role as an {{user.role}} </h5>
                         <p class = "card-text"> Our donor is for good samaeitans who are keen to help. You may not be sure what is required to help assist those in need and where the need is located. With this role you will be able to search for requested items and pledge a donation in response. Any help you can offer will go along way in anothers recovery. </p>
-                        <a href = "#" class = "btn btn-primary">Check Out the Event Page!</a>
                     </div>
                     <div class = "card-footer text muted">
                       <h5>Your id is: #{{user.id}}</h5>
