@@ -21,17 +21,24 @@
     </nav>
 
     <div class="container mt-3">
-       <div class="jumbotron">
-            <h1 class="display-4">Event: {{event.EventName}}</h1>
-            <h2 class="lead"> Event Type: {{event.type}} </h2>
-            <h2 class= "lead"> Date: {{event.date}} </h2>
-            <h2 class ="lead"> State: {{event.state}}, City: {{event.city}}, Zipcode: {{event.eventzip}} </h2>
+       
+            {{#each event}}
+                 <div class="jumbotron">
+            <h1 class="display-4">Event: {{this.EventName}}</h1>
+            <h2 class="lead"> Event ID: {{this.id}} </h2>
+            <h2 class="lead"> Event Type: {{this.type}} </h2>
+            <h2 class= "lead"> Date: {{this.date}} </h2>
+            <h2 class ="lead"> State: {{this.state}}, City: {{this.city}}, Zipcode: {{this.eventzip}} </h2>
             <hr class="my-4">
-            <h1 class = "lead"> Description: <br> <br> {{event.description}} </h1>
+                
+            <h1 class = "lead"> Description: <br> <br> {{this.description}} </h1>
             
-        </div> 
+                </div> 
+            <br>
+            <br>                                
+            {{/each}}
+          
     </div>
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </body>
 </html>

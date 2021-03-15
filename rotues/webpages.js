@@ -79,12 +79,14 @@ router.get('/createEvent',authenticateController.is_LoggedIn_As_Admin, (req,res)
 router.get('/viewEvent',authenticateController.is_LoggedIn_As_Admin, (req,res) => {
    DB.query('SELECT * FROM events', (error, results) =>{ //get information from database 
        
-    for(var i = 0; i < results.length; i++) {  
-             events = results[i]     
+    console.log('attempting to query')
+    if(error){
+        console.log(error)
+    }else{
+        console.log(results)    
+        res.render('viewEvent', {event: results})//set up page for users to view events 
     }
-    res.render('viewEvent', {
-        event: events
-    })//set up page for users to view events 
+
    })
 })
 
