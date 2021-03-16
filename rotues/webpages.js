@@ -77,17 +77,13 @@ router.get('/createEvent',authenticateController.is_LoggedIn_As_Admin, (req,res)
 
 
 router.get('/viewEvent',authenticateController.is_LoggedIn_As_Admin, (req,res) => {
-   DB.query('SELECT * FROM events', (error, results) =>{ //get information from database 
-       
-    console.log('attempting to query')
-    if(error){
-        console.log(error)
-    }else{
-        console.log(results)    
+    if(req.user){
+   DB.query('SELECT * FROM events', (error, results) =>{ //get information from database     
         res.render('viewEvent', {event: results})//set up page for users to view events 
-    }
-
-   })
+    })
+} else{
+    res.redirect('login')
+}
 })
 
 module.exports = router

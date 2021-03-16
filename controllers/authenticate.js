@@ -34,14 +34,11 @@ exports.registration = async (req,res) => { //move on past authenticate
                 message: "These passwords do not match"
             });
         }
-        let hashedpassword = await bcrypt.hash(password, 8); //hash the password 8 times
-        console.log(hashedpassword);
-        
+        let hashedpassword = await bcrypt.hash(password, 8); //hash the password 8 times     
         DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password: hashedpassword, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info to the users table
             if(error){
                 console.log(error)
             }else{
-                console.log(results)
                 return res.redirect('/login')
             }
         })
@@ -57,19 +54,16 @@ exports.login = async (req,res) => {
         const {email, password, role} = req.body;
 
         DB.query('SELECT * FROM users WHERE email = ?', [email], async (error,results) =>{
-            console.log(results)
             if(!results || !(await bcrypt.compare(password, results[0].password)) || !(role == results[0].role)){ //check if the password, email or role is incorrect.
                 res.status(401).render('login', {
                     message: 'The email, password or selected role is incorrect'
                 })
-             }else{
-                
+             }else{   
             if((results[0].role && role) == 'Admin'){ //making sure information all matches before directing user to thier home page based on thier role.
                 const id = results[0].id; //cookies are bullshit.
                 const token = jwt.sign({id: id}, process.env.JWT_SECRET, { //we will asign a specific cookie to the admin
                     expiresIn: process.env.JWT_EXPIRES_IN 
                 })
-                console.log("The admin token is" + token) //display the users token
                 const cookieOptions = {
                     expires: new Date(
                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 //When the cookie will expire
@@ -77,7 +71,6 @@ exports.login = async (req,res) => {
                     httpOnly: true
                 }
                  res.cookie('jwt', token, cookieOptions);
-
                  res.status(200).redirect('/admin') //redirect to the admin page 
              }
 
@@ -86,7 +79,6 @@ exports.login = async (req,res) => {
                  const token_for_donor = jwt.sign({id: id_donor}, process.env.JWT_SECRET_DONOR,{
                     expiresIn: process.env.JWT_EXPIRES_IN
                  })
-                 console.log("The donor token is" + token_for_donor)
                  const cookieOptionsDonor = {
                      expires: new Date(
                          Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 //30 days
@@ -101,7 +93,6 @@ exports.login = async (req,res) => {
                  const token_for_recipient = jwt.sign({id: id_recipient}, process.env.JWT_SECRET_RECEP,{
                      expiresIn: process.env.JWT_EXPIRES_IN
                  })
-                 console.log("The recipient token is" + token_for_recipient)
                  const cookieOptionsRecipient = {
                      expires: new Date(
                          Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
@@ -124,8 +115,6 @@ exports.is_LoggedIn_As_Admin = async(req,res,next) =>{ //work on continusly chec
         try{
             //verify the users cookie token 
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET)
-            console.log(decoded);
-
             //check if the user is still existing we can use this to boot users out if they erase thier cookies or are timed out
             DB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error, result) => { //query from the database
                 if(!result){ //if not the result
@@ -147,8 +136,6 @@ exports.is_LoggedIn_As_Donor = async(req,res,next) => { //this will follow the s
     if(req.cookies.jwt){
         try{
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET_DONOR);
-            console.log(decoded);
-
             DB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error,result) => {
                 if(!result){
                     return next();
@@ -169,8 +156,6 @@ exports.is_LoggedIn_As_Recipient = async(req,res,next) => {
     if(req.cookies.jwt){
         try{
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET_RECEP);
-            console.log(decoded);
-
             DB.query('SELECT * FROM users WHERE id = ?', [decoded.id], (error,result) => {
                 if(!result){
                     return next();
