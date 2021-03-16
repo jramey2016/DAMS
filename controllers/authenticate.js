@@ -56,9 +56,9 @@ exports.login = async (req,res) => {
     try{
         const {email, password, role} = req.body;
 
-        DB.query('SELECT * FROM users WHERE email = ?', [email],  (error,results) =>{
+        DB.query('SELECT * FROM users WHERE email = ?', [email], async (error,results) =>{
             console.log(results)
-            if(!results || !(bcrypt.compare(password,results[0].password)) || !(role == results[0].role)){ //check if the password, email or role is incorrect.
+            if(!results || !(await bcrypt.compare(password, results[0].password)) || !(role == results[0].role)){ //check if the password, email or role is incorrect.
                 res.status(401).render('login', {
                     message: 'The email, password or selected role is incorrect'
                 })
