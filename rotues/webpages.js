@@ -86,4 +86,15 @@ router.get('/viewEvent',authenticateController.is_LoggedIn_As_Admin, (req,res) =
 }
 })
 
+router.get('/pledge', authenticateController.is_LoggedIn_As_Donor, (req,res) => { //page for donors to make pledges
+    if(req.user){
+        res.render('pledge', {
+            user: req.user
+        })
+    }
+    else{
+        res.redirect('login')
+    }
+})
+
 module.exports = router

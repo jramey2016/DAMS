@@ -12,10 +12,8 @@
     <nav>
         <h4>Create An Event</h4>
         <ul>
-            <li><a href="/admin"> Profile </a></li>
-            <li><a href="/viewEvent"> Event Page </a></li>
-            <li><a href= "/"> Donor Queue </a></li>
-            <li><a href="/"> Request Queue </a></li>
+            <li><a href="/donor"> Profile </a></li>
+            <li><a href= "/"> View Request</a></li>
             <li><a href="/authenticate/logout"> Logout </a></li>
         </ul>
     </nav>
@@ -28,30 +26,29 @@
                 <div class="card-body">
                     <form action = "/createEvent/createEvent" method = "POST">
                         <div class="form-group">
-                            <label for="EventName">Name of the Event</label>
-                            <input type="EventName" class="form-control" id="EventName" name= "EventName" required>
+                            <label for="pledge">Pledge Title</label>
+                            <input type="pledge" class="form-control" id="pledge" name= "pledge" required>
                         </div>
             <br>
-                            <label for ="type">Select the Type of Event</label>
+                            <label for ="type">Select the Type of Aid</label>
                                 <select id = "type" class = "form-control" id = "type" name = "type" required >
-                                    <option> Fundraiser </option>
-                                    <option> Natural Disaster </option>
-                                    <option> Pandemic Relief</option>
-                                    <option> Voulunteer Oppurtuinity</option>   
+                                    <option> Food/Non-Perishables</option> 
+                                    <option> Shelter </option>
+                                    <option> Clothing </option>
+                                    <option> Medical Supplies</option>
                                 </select>
             <br>       
-                                    <label for="date">Events Date</label>
-                                        <input type="date" class="form-control" id="date" name = "date" required>
 
-            <br>
-
-                                    <label for="city">Locations City/Town</label>
-                                        <input type="city" class="form-control" id="city" name = "city" placeholder= "Enter the City/Town" required>
+                                    <label for="Item">Items Name</label>
+                                        <input type="Item" class="form-control" id="Item" name = "Item" placeholder= "Enter the Items Name" required>
             <br>
                                 <div class="form-group">
-                                    <label for="description">Brief Description</label>
+                                    <label for="description">Brief Item Description</label>
                                     <textarea class="form-control" id="description" name = "description" rows="3" placeholder= "Limit to 100 characters"></textarea>
                                 </div>
+            <br>
+                                     <label for="city">City Name</label>
+                                        <input type="city" class="form-control" id="city" name = "city" placeholder= "Enter the City/Town" required>
             <br>
                                     <label for ="state">Select State</label>
                                         <select id = "state" class = "form-control" id = "state" name = "state" required>
@@ -69,19 +66,13 @@
                                             <option> VT </option><option> VA </option><option> WA </option><option> WV </option>
                                             <option> WI </option><option> WY </option>
                                         </select>
-            <br>
-                                    <label for="eventzip">Enter Locations Zipcode</label>
-                                        <input type="eventzip" class="form-control" id="eventzip" name = "eventzip" placeholder= "Enter the Locations Zipcode" required>
-                </div>
-
-       
-                                    <button type="submit" class="btn2 btn-primary">Create</button>
+           
+                </div>                            
+                                    <button type="submit" class="btn2 btn-primary">Pledge</button>
                 </form>
                                     <div class = "card-footer text muted"></div>
         </div>
     </div>
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>  
 </body>
 </html>
