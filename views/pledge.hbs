@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
-    <title>Create An Event</title>
+    <title>Make a Pledge</title>
 </head>
 <body style = "background-color: rgb(255, 255, 255); text-align: ">
     <nav>
@@ -21,13 +21,13 @@
     <div class="container mt-3">
         <div class="card">
             <div class = "card-header">
-                Event Form
+                Pledge Form
             </div>
                 <div class="card-body">
-                    <form action = "/createEvent/createEvent" method = "POST">
+                    <form action = "/pledge/pledge" method = "POST">
                         <div class="form-group">
                             <label for="pledge">Pledge Title</label>
-                            <input type="pledge" class="form-control" id="pledge" name= "pledge" required>
+                            <input type="pledge" class="form-control" id="pledge" name= "pledge" placeholder = 'Pledge Title Here' required>
                         </div>
             <br>
                             <label for ="type">Select the Type of Aid</label>
@@ -39,12 +39,12 @@
                                 </select>
             <br>       
 
-                                    <label for="Item">Items Name</label>
-                                        <input type="Item" class="form-control" id="Item" name = "Item" placeholder= "Enter the Items Name" required>
+                                    <label for="item">Items Name</label>
+                                        <input type="item" class="form-control" id="item" name = "item" placeholder= "Enter the Items Name" required>
             <br>
                                 <div class="form-group">
                                     <label for="description">Brief Item Description</label>
-                                    <textarea class="form-control" id="description" name = "description" rows="3" placeholder= "Limit to 100 characters"></textarea>
+                                    <textarea class="form-control" id="description" name = "description" rows="1" placeholder= "Limit to 100 characters"></textarea>
                                 </div>
             <br>
                                      <label for="city">City Name</label>

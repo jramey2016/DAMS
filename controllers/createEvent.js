@@ -1,7 +1,5 @@
-const e = require("express");
 const mysql = require("mysql") //set up mysql
-const {promisify} = require ('util')
-const jwt = require('jsonwebtoken') //import cookies
+
 //connect to our database
 const DB = mysql.createConnection({
     host: process.env.HOST, //connecting to local host since were working locally 

@@ -37,11 +37,11 @@ DB.connect((error) => {
     }
 })
 
-//set up the new routes go to routes folder and see what routes can be rendered.
+//set up the new routes go to routes folder and see what routes can be rendered. Also for post methods 
 app.use('/', require('./rotues/webpages'))
 app.use('/createEvent', require('./rotues/createEvent'))
 app.use('/authenticate', require('./rotues/authenticate'))
-
+app.use('/pledge', require('./rotues/pledge'))
 
 
 //Listen for port 3000 and display once you are connected.
