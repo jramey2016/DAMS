@@ -97,4 +97,14 @@ router.get('/pledge', authenticateController.is_LoggedIn_As_Donor, (req,res) => 
     }
 })
 
+router.get('/request', authenticateController.is_LoggedIn_As_Recipient, (req,res) => { //route for recipient to make request
+    if(req.user){
+        res.render('request', {
+            user: req.user
+        })
+    }else{
+        res.redirect('login')
+    }
+})
+
 module.exports = router
