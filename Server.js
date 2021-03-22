@@ -42,7 +42,7 @@ app.use('/', require('./rotues/webpages'))
 app.use('/createEvent', require('./rotues/createEvent'))
 app.use('/authenticate', require('./rotues/authenticate'))
 app.use('/pledge', require('./rotues/pledge'))
-
+app.use('/request', require('./rotues/request'))
 
 //Listen for port 3000 and display once you are connected.
 app.listen(3000, () => {
