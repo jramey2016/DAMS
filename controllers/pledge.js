@@ -10,5 +10,17 @@ const DB = mysql.createConnection({
 //on Browser ===> http://localhost/phpmyadmin/
 
 exports.createpledge =  (req,res) =>{
-
+try{
+    const{id, UserName, pledge, type, item, quan, city, state, zipcode} = req.body
+    
+   DB.query('INSERT INTO pledge SET?',{usersid: id, UserName: UserName, pledge: pledge, type: type, item: item, quantity: quan, city: city, state: state, pledgezip: zipcode} ,async(error,results) => {
+        if(error){
+        console.log(error)
+        }else {
+        res.redirect('/donor')
+        }
+   })
+}catch(error){
+    console.log(error)
+}
 }

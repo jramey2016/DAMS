@@ -25,10 +25,21 @@
     <div class="container mt-5">
         <div class="card">
             <div class = "card-header">
-                Pledge Form
+                Pledge Form 
             </div>
                 <div class="card-body">
                     <form action = "/pledge/pledge" method = "POST">
+
+                            <label for ="id">Your ID#</label>
+                                <select id = "id" class = "form-control" id = "id" name = "id" readonly>
+                                    <option> {{user.id}}</option>    
+                                </select>
+            <br>   
+                         <label for ="UserName">Your UserName</label>
+                                <select id = "UserName" class = "form-control" id = "UserName" name = "UserName" readonly>
+                                    <option> {{user.UserName}}</option>    
+                                </select>
+            <br>
                         <div class="form-group">
                             <label for="pledge">Pledge Title</label>
                             <input type="pledge" class="form-control" id="pledge" name= "pledge" placeholder = 'Pledge Title Here' required>
@@ -48,7 +59,7 @@
             <br>
                         
                                     <label for="quan">Items Quanitity</label>
-                                        <input type="quan" class="form-control" id="quan" name = "quan" placeholder= "Enter the Items quanitity (if needed)">
+                                        <input type="quan" class="form-control" id="quan" name = "quan" placeholder= "Enter the Items quanitity" required>
             <br>
                                      <label for="city">City Name</label>
                                         <input type="city" class="form-control" id="city" name = "city" placeholder= "Enter the City/Town" required>
@@ -69,6 +80,11 @@
                                             <option> VT </option><option> VA </option><option> WA </option><option> WV </option>
                                             <option> WI </option><option> WY </option>
                                         </select>
+                <br>
+                                    <label for ="zipcode">Your Zipcode</label>
+                                <select id = "zipcode" class = "form-control" id = "zipcode" name = "zipcode" readonly>
+                                    <option> {{user.zipcode}}</option>    
+                                </select>
            
                 </div>                            
                                     <button type="submit" class="btn2 btn-primary">Pledge</button>
