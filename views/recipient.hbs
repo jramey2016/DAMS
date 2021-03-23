@@ -41,21 +41,39 @@
             </div>
 
             <div class ="col-8">
-                <div class = "card text-center">
+                <div class = "card text-left">
                   <div class = "card-header">
                       {{user.UserName}}'s Profile Page
                     </div>  
                     <div class = "card-body">
-                        <h5 class = "card-title"> Your role as an {{user.role}} </h5>
+                        <h5 class = "card-title"> Your role as a {{user.role}}: </h5>
                         <p class = "card-text"> Our recipient role is for those affected by natures fury. Those who are in need of assistance will be able to find pledged resources such as; food, clothing, shelter, medicines, medical help, and various common consoumables. Anyone who has this role will also be able to submit request based on thier current needs for a donor to fufill. </p>
                     </div>
-                    <div class = "card-footer text muted">
-                      <h5>Your id is: #{{user.id}}</h5>
-                    </div>
+                    <div class = "card-footer text-center">
+                      <h6>Your id is: #{{user.id}}</h6>
+                            </div>
+                        </div>
+              <br>       
+                      
+                 <div class ="col-12">
+                     <div class = "card text-left">
+                         <div class = "card-header">
+                              {{user.UserName}}'s Recent Requests:
+                         </div>
+                         <div class = "card-body">
+
+
+
+                         </div>
+                          <div class = "card-footer text-center">
+
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </div>
-        </div>          
-    </div>
+        </div>
+       
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
    
 </body>

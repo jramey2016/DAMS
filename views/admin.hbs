@@ -34,7 +34,7 @@
                         </div>
                         <div class = "card-body">
                              <h5 class = "card-title"> Hey {{user.UserName}}! </h5>
-                             <p class = "card-text">Your role is a/an: {{user.role}}</p>
+                             <p class = "card-text">Your Role is An: {{user.role}}</p>
                              <p class = "card-text" >Zipcode: {{user.zipcode}}</p>
                             <p class = "card-text"> Email: {{user.email}}</p>
                             </div>
@@ -42,16 +42,16 @@
                     </div>
             </div>
             <div class ="col-8">
-                <div class = "card text-center">
+                <div class = "card text-left">
                     <div class = "card-header">
                       {{user.UserName}}'s Profile Page
                     </div>  
                         <div class = "card-body">
-                            <h5 class = "card-title"> Your role as an {{user.role}}: </h5>
+                            <h5 class = "card-title"> Your Role As An {{user.role}}: </h5>
                             <p class = "card-text"> Our admin role is reserved for those who do not have disposables on hand but would still like to voulunteer and offer a helping hand. With this role, you will be able to manually match a donor-recipient pair, as well as create events for potential and occuring disaster hotspots. </p>
                         </div>
-                    <div class = "card-footer text muted">
-                        <h5>Your User ID is: #{{user.id}}</h5>
+                    <div class = "card-footer text-center">
+                        <h7>Your User ID is: #{{user.id}}</h7>
                     </div>
                 </div>
             </div>

@@ -41,16 +41,31 @@
             </div>
 
             <div class ="col-8">
-                <div class = "card text-center">
+                <div class = "card text-left">
                   <div class = "card-header">
                       {{user.UserName}}'s Profile Page
                     </div>  
                     <div class = "card-body">
-                        <h5 class = "card-title"> Your role as an {{user.role}} </h5>
+                        <h5 class = "card-title"> Your Role As A {{user.role}} </h5>
                         <p class = "card-text"> Our donor is for good sameritans who are keen to help. You may not be sure what is required to help assist those in need and where the need is located. With this role you will be able to search for requested items and pledge a donation in response. Any help you can offer will go along way in anothers recovery. </p>
                     </div>
-                    <div class = "card-footer text muted">
-                      <h5>Your id is: #{{user.id}}</h5>
+                    <div class = "card-footer text-center">
+                      <h6>Your ID is: #{{user.id}}</h6>
+                    </div>
+                </div>
+        <br>
+                <div class ="col-12">
+                    <div class = "card text-left">
+                        <div class = "card-header">
+                            {{user.UserName}}'s Recent Pledges:
+                        </div>
+                        <div class = "card-body">
+
+
+                        </div>
+                        <div class = "card-footer text-center">
+
+                        </div>
                     </div>
                 </div>
             </div>
