@@ -12,7 +12,7 @@ const DB = mysql.createConnection({
 exports.createpledge =  (req,res) =>{
 try{
     const{id, UserName, pledge, type, item, quan, city, state, zipcode} = req.body
-    
+    //insert pledge form into the DB
    DB.query('INSERT INTO pledge SET?',{usersid: id, UserName: UserName, pledge: pledge, type: type, item: item, quantity: quan, city: city, state: state, pledgezip: zipcode} ,async(error,results) => {
         if(error){
         console.log(error)
