@@ -5,7 +5,7 @@ nav{
     padding: 0px 80px;
     display: flex;
     justify-content: space-between;
-    height: 150px;
+    height: 133px;
 }
 
 nav ul{
@@ -56,12 +56,12 @@ nav li a:hover {
 .btn{
     background-color: gray;
     transition-duration: 0.4s;
-    width: 1260px;
+    
     font-size: 20px;
 }
 
 .btn:hover{
-    background-color: gold;
+    background-color: rgb(255, 215, 0);
     color: black
 }
 
@@ -78,6 +78,8 @@ nav li a:hover {
 }
 
 .logo{
-    background-color:rgb(255, 255, 255); ;
+    background-color:rgb(255, 255, 255);
+    width: 22%;
 }
+
 
