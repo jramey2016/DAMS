@@ -8,5 +8,6 @@ router.post('/login', authenticateController.login) //controller for log in auth
 
 router.get('/logout', authenticateController.logout) //logout controller
 
+router.post('/forgot', authenticateController.forgot) //controller for forgotten password
 
 module.exports = router

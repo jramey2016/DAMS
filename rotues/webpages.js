@@ -107,4 +107,8 @@ router.get('/request', authenticateController.is_LoggedIn_As_Recipient, (req,res
     }
 })
 
+router.get('/forgot', (req,res) => {
+    res.render('forgot')
+})
+
 module.exports = router

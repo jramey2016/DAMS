@@ -19,7 +19,9 @@ exports.registration = async (req,res) => { //move on past authenticate
     const Confirm = req.body.Confirmpassword;
     const zipcode = req.body.zipcode; //get the zipcode
     const role = req.body.role; //get the users role
-
+    const question = req.body.question;
+    const ans = req.body.ans;
+    
     DB.query('SELECT email FROM users WHERE email = ?', [email], async (error,results) => {
         if(error){
             console.log(error); //log any errors
@@ -35,7 +37,7 @@ exports.registration = async (req,res) => { //move on past authenticate
             });
         }
         let hashedpassword = await bcrypt.hash(password, 8); //hash the password 8 times     
-        DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password: hashedpassword, zipcode:zipcode, role:role}, (error, results) =>{ //send out the info to the users table
+        DB.query('INSERT INTO users SET ?', {UserName: name, email: email, password: hashedpassword, zipcode:zipcode, role:role, question: question, ans: ans}, (error, results) =>{ //send out the info to the users table
             if(error){
                 console.log(error)
             }else{
@@ -45,10 +47,15 @@ exports.registration = async (req,res) => { //move on past authenticate
     });
 }
 
+exports.forgot = async (req,res) => {
+    const{email, question, ans, role} = req.body;
+    try{
 
-    
- 
-    
+    }catch(error){
+        console.log(error)
+    }
+}
+
 exports.login = async (req,res) => {
     try{
         const {email, password, role} = req.body;
@@ -109,7 +116,6 @@ exports.login = async (req,res) => {
     }
 }
 
-
 exports.is_LoggedIn_As_Admin = async(req,res,next) =>{ //work on continusly checking if the user is logged in when they redirect to a page that has private acess.
     if(req.cookies.jwt){
         try{
@@ -152,7 +158,7 @@ exports.is_LoggedIn_As_Donor = async(req,res,next) => { //this will follow the s
         }
     }
 
-exports.is_LoggedIn_As_Recipient = async(req,res,next) => {
+exports.is_LoggedIn_As_Recipient = async(req,res,next) => { //this will follow the same flow as the two prior cookie functions.
     if(req.cookies.jwt){
         try{
             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET_RECEP);
@@ -171,7 +177,6 @@ exports.is_LoggedIn_As_Recipient = async(req,res,next) => {
         next();
     }
 }
-
 
 //time to logout
 exports.logout = async (req,res) => {
