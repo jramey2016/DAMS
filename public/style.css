@@ -5,7 +5,7 @@ nav{
     padding: 0px 80px;
     display: flex;
     justify-content: space-between;
-    height: 133px;
+    height: 160px;
 }
 
 nav ul{
@@ -77,7 +77,4 @@ nav li a:hover {
     color: black
 }
 
-.logo{
-    background-color:rgb(255, 255, 255);
-    width: 22%;
-}
+

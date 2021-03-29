@@ -12,7 +12,7 @@
     <nav>
         <div class = "logo" id = "logo">
             <a href= "/" class = "logo">
-            <img src = "/UiowaDisasterRelief-05.png" alt = "DAMS Logo"/>
+            <img src = "/DisasterReliefUiowaOldGold-06.png" alt = "DAMS Logo"/>
             </a>
         </div>
         <ul>
@@ -24,22 +24,28 @@
         </ul>
     </nav>
 
-    <div class="container mt-3">
+    <div class="container mt-4">
        
             {{#each event}}
-                 <div class="jumbotron">
-            <h1 class="display-4">Event: {{this.EventName}}</h1>
-            <h2 class="lead"> Event ID: {{this.id}} </h2>
-            <h2 class="lead"> Event Type: {{this.type}} </h2>
-            <h2 class= "lead"> Date: {{this.date}} </h2>
-            <h2 class ="lead"> State: {{this.state}}, City: {{this.city}}, Zipcode: {{this.eventzip}} </h2>
-            <hr class="my-4">
-                
-            <h1 class = "lead"> Description: <br> {{this.description}} </h1>
-            <hr class="my-4">
-                </div>                           
+                 <div class = "card-body">
+                     <div class = "card">
+                         <div class = "card-header"></div>
+                         <div class = "card-body">
+                             <h3 class = "card-title">Event: {{this.EventName}}</h3>
+                             <hr class="my-4">
+                             <h5 class = "card-title"> Event Type: {{this.type}} </h5>
+                             <h5 class = "card-title"> Date: {{this.date}}</h5>
+                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.eventzip}}</h5>
+                              <hr class="my-4">
+                            <h6 class = "card-title">Description: {{this.description}}</h5>
+                         </div>
+                         <div class = "card-footer text-center"> Event ID: {{this.id}} </div>
+                     </div>
+                 </div>
+                                    
             {{/each}}
-          
+            
+            
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </body>
