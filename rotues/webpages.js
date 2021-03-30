@@ -42,19 +42,12 @@ router.get('/admin', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
 
 router.get('/donor',authenticateController.is_LoggedIn_As_Donor, (req,res) => {
     if(req.user){
-        console.log(req.user.id)
-    DB.query('SELECT users.*, pledge.* FROM users, pledge WHERE users.id = pledge.usersid', (error, results) => {
-        req.pledge = results[0]
-        console.log(req.pledge.usersid)
-        if(req.user.id == req.pledge.usersid){
+        var id_val = req.user.id
+    DB.query('SELECT * FROM pledge WHERE usersid = ?', id_val, (error, results) => {
         res.render('donor', {
             user: req.user,
             pledge: results
-          })}else{
-              res.render('donor', {
-                  user: req.user
-              })
-          }
+          })
     })
     }else{
         res.redirect('login')
