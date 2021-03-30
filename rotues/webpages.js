@@ -5,8 +5,6 @@ const authenticateController = require('../controllers/authenticate')
 const { decodeBase64 } = require('bcryptjs')
 const mysql = require("mysql")
 
-
-
 //connect to our database
 const DB = mysql.createConnection({
     host: process.env.HOST, //connecting to local host since were working locally 
@@ -23,7 +21,7 @@ router.get('/',(req,res) => {
 
 router.get('/register',(req,res) => {
     res.render('register') 
-}) //set up a route to main page.
+}) //set up a route to the registration page.
 
 router.get('/login', (req,res) => {
     res.render('login')
@@ -40,34 +38,36 @@ router.get('/admin', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
     
 }) //set up router to the admin page
 
-router.get('/donor',authenticateController.is_LoggedIn_As_Donor, (req,res) => {
+router.get('/donor',authenticateController.is_LoggedIn_As_Donor, (req,res) => { //donor's home page, middleware will be used on all of the users accounts dispatch cookies and verify role.
     if(req.user){
         var id_val = req.user.id
-    DB.query('SELECT * FROM pledge WHERE usersid = ?', id_val, (error, results) => {
+    DB.query('SELECT * FROM pledge WHERE usersid = ?', id_val, (error, results) => { //get specific information pertainning to that user.
         res.render('donor', {
             user: req.user,
             pledge: results
           })
-    })
-    }else{
+    })}else{
         res.redirect('login')
     }
 }) //set up router to the donor page
 
-router.get('/recipient', authenticateController.is_LoggedIn_As_Recipient, (req,res) =>{ //middle for autentification
+router.get('/recipient', authenticateController.is_LoggedIn_As_Recipient, (req,res) =>{ //recipiends homepage
     if(req.user){
+        var id_val = req.user.id
+    DB.query('SELECT * FROM request WHERE usersid = ?', id_val, (error,results) =>{ //get specific request information pertaining to that user
         res.render('recipient', {
-            user: req.user
-        }) 
-    } else{
+            user: req.user,
+            pledge: results
+    })
+    })} else{
         res.redirect('login')
     }
     
 }) //set up router to the recipient page
 
-router.get('/learn', (req,res) => {
+router.get('/learn', (req,res) => { 
     res.render('learn')
-})
+}) //set up router for the home page
 
 router.get('/createEvent',authenticateController.is_LoggedIn_As_Admin, (req,res) => { //still need middleware only an admin should be able to view this page.
     if(req.user){
@@ -88,18 +88,17 @@ router.get('/viewEvent',authenticateController.is_LoggedIn_As_Admin, (req,res) =
 } else{
     res.redirect('login')
 }
-})
+}) //router for the view event page.
 
 router.get('/pledge', authenticateController.is_LoggedIn_As_Donor, (req,res) => { //page for donors to make pledges
     if(req.user){
         res.render('pledge', {
             user: req.user
         })
-    }
-    else{
+    }else{
         res.redirect('login')
     }
-})
+}) //set up router for donor to create pledges
 
 router.get('/request', authenticateController.is_LoggedIn_As_Recipient, (req,res) => { //route for recipient to make request
     if(req.user){
@@ -109,10 +108,10 @@ router.get('/request', authenticateController.is_LoggedIn_As_Recipient, (req,res
     }else{
         res.redirect('login')
     }
-})
+}) //set up router for recipients to male requests
 
 router.get('/forgot', (req,res) => {
     res.render('forgot')
-})
+}) //set up router for the forgot password page.
 
 module.exports = router

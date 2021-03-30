@@ -9,7 +9,7 @@ const DB = mysql.createConnection({
 });
 //on Browser ===> http://localhost/phpmyadmin/
 
-exports.createpledge =  (req,res) =>{
+exports.createpledge =  (req,res) =>{ //move infromation out to the database when donor creates a pledge
 try{
     const{id, UserName, pledge, type, item, quan, city, state, zipcode} = req.body
     //insert pledge form into the DB

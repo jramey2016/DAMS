@@ -67,7 +67,7 @@ exports.login = async (req,res) => {
                 })
              }else{   
             if((results[0].role && role) == 'Admin'){ //making sure information all matches before directing user to thier home page based on thier role.
-                const id = results[0].id; //cookies are bullshit.
+                const id = results[0].id;
                 const token = jwt.sign({id: id}, process.env.JWT_SECRET, { //we will asign a specific cookie to the admin
                     expiresIn: process.env.JWT_EXPIRES_IN 
                 })

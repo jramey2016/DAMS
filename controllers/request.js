@@ -9,7 +9,7 @@ const DB = mysql.createConnection({
 });
 //on Browser ===> http://localhost/phpmyadmin/
 
-exports.request = (req,res) =>{
+exports.request = (req,res) =>{ //move data out to databse once recipient creates a request
  try{
     const{id, UserName, request, type, item, quan, city, state, zipcode} = req.body
     //insert request form into the DB

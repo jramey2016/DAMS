@@ -9,11 +9,9 @@ const DB = mysql.createConnection({
 });
 //on Browser ===> http://localhost/phpmyadmin/
 
-exports.create = (req,res) => { //move the information out to the database. 
+exports.create = (req,res) => { //move the information out to the database when an admin creates an event.
   try{
-  
    const {EventName, type, date, description, city, state, eventzip} = req.body;
-   
    DB.query('INSERT INTO events SET ?', {EventName: EventName, type:type, date: date, description: description, city: city, state: state, eventzip: eventzip}, async (error,results) => {
        if(error){
            console.log(error)

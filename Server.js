@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const { allowedNodeEnvironmentFlags } = require("process");
 
 
-dotenv.config({ path: './.env' }) //path info for database into the .env file
+dotenv.config({ path: './.env' }) //path info for database in the .env file
 
 const app = express();
 
@@ -37,7 +37,7 @@ DB.connect((error) => {
     }
 })
 
-//set up the new routes go to routes folder and see what routes can be rendered. Also for post methods 
+//set up the new routes go to routes folder and see what routes can be rendered. Also for post methods to read input from fields
 app.use('/', require('./rotues/webpages'))
 app.use('/createEvent', require('./rotues/createEvent'))
 app.use('/authenticate', require('./rotues/authenticate'))
