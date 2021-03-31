@@ -114,4 +114,7 @@ router.get('/forgot', (req,res) => {
     res.render('forgot')
 }) //set up router for the forgot password page.
 
+router.get('/change', (req,res) => {
+    res.render('change')
+})// change password screeen once the user has verified security quesitons.
 module.exports = router

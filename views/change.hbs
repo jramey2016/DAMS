@@ -30,21 +30,14 @@
                 <div class="card-body">
                     <form action = "/authenticate/forgot" method = "POST">            
                         <div class="form-group">
-                        <label for="email">Email Address </label>
-                         <input type="email" class="form-control" id="email" name = "email" placeholder= "Enter Your email" required>
+                        <label for="password">Email Address </label>
+                         <input type="password" class="form-control" id="password" name = "password" placeholder= "Enter Your New Password" required>
                         </div>
         <br>
-                <label for = "question"> Select Your Recovery Question </label>
-                    <select id = "question"  class = "form-control" id = "question" name = "question" required>
-                        <option>Name of your Favorite Pet?</option>
-                        <option>Your Mothers Maiden Name?</option>
-                        <option>Where Did You Go to Highschool?</option>
-                        <option>What was your First Car?</option>
-                    </select>
-        <br>    
-                 <label for = "ans">Recovery Answer</label>
-                <input type="ans" class = "form-control"  id = "ans" name = "ans" placeholder="Enter Your Answer" required>
-
+                <div class="form-group">
+                    <label for="Confirmpassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="Confirmpassword" name = "Confirmpassword" placeholder= "Enter Your Password" required>
+                </div>
         <br>
                 
                 <div>

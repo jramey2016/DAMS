@@ -47,21 +47,36 @@ exports.registration = async (req,res) => { //move on past authenticate
     });
 }
 
-exports.forgot = async (req,res) => {
-    const{email, question, ans, role} = req.body;
+exports.forgot = async (req,res,next) => {
+    const{email, question, ans} = req.body;
     try{
-
+        DB.query('SELECT * FROM users WHERE email = ?', [email], async(error,result) =>{
+           
+            if(!result){
+                res.status(401).render('forgot',{
+                    message: 'The information you entered is incorrect'
+                })
+                return next()
+            }
+           if(!(question == result[0].question) || !(ans == result[0].ans)){
+                res.status(401).render('forgot',{
+                    message: 'The information you entered is incorrect'
+                })
+            }else{
+                res.redirect('/change')
+            }
+        })
     }catch(error){
-        console.log(error)
+        next(error)
     }
 }
 
 exports.login = async (req,res) => {
     try{
         const {email, password, role} = req.body;
-
+        console.log(email)
         DB.query('SELECT * FROM users WHERE email = ?', [email], async (error,results) =>{
-            if(!results || !(await bcrypt.compare(password, results[0].password)) || !(role == results[0].role)){ //check if the password, email or role is incorrect.
+            if(!results ||  !(await bcrypt.compare(password, results[0].password)) || !(role == results[0].role)){ //check if the password, email or role is incorrect.
                 res.status(401).render('login', {
                     message: 'The email, password or selected role is incorrect'
                 })
