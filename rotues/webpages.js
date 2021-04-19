@@ -4,6 +4,7 @@ const router = express.Router()
 const authenticateController = require('../controllers/authenticate')
 const { decodeBase64 } = require('bcryptjs')
 const mysql = require("mysql")
+const e = require('express')
 
 //connect to our database
 const DB = mysql.createConnection({
@@ -117,4 +118,33 @@ router.get('/forgot', (req,res) => {
 router.get('/change', (req,res) => {
     res.render('change')
 })// change password screeen once the user has verified security quesitons.
+
+//////////////////////////////////////////////////////
+router.get('/donorQ', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
+if(req.user){
+    DB.query('SELECT * FROM pledge where usersid', (error, results) => {
+        if(req.user){
+            res.render('donorQ', {pledge: results})
+        }
+    } )
+}else{
+    res.redirect('login')
+}
+})
+/////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////
+router.get('/requestQ', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
+    if(req.user){
+    DB.query('SELECT * FROM request where usersid', (error,results) => {
+            res.render('requestQ', {request: results}) 
+    })
+}else{
+    res.redirect('login')
+}
+} )
+////////////////////////////////////////////////////////
+
+
 module.exports = router
+
