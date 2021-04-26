@@ -13,10 +13,10 @@ const app = express();
 //this is for testing a commit and push.
 //connect to our database
 const DB = mysql.createConnection({
-    host: process.env.HOST, //connecting to local host since were working locally 
-    user: process.env.USER,  //Bring in information from the env
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    host: 'localhost', //process.env.HOST, //connecting to local host since were working locally 
+    user: 'root',//process.env.USER,  //Bring in information from the env
+    password: '', //process.env.PASSWORD,
+    database: 'nodejs'//process.env.DATABASE
 });
 //on Browser ===> http://localhost/phpmyadmin/
 

@@ -119,7 +119,6 @@ router.get('/change', (req,res) => {
     res.render('change')
 })// change password screeen once the user has verified security quesitons.
 
-//////////////////////////////////////////////////////
 router.get('/donorQ', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
 if(req.user){
     DB.query('SELECT * FROM pledge where usersid', (error, results) => {
@@ -130,10 +129,8 @@ if(req.user){
 }else{
     res.redirect('login')
 }
-})
-/////////////////////////////////////////////////////
+}) //admins view of the pledge Queue.
 
-/////////////////////////////////////////////////////////
 router.get('/requestQ', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
     if(req.user){
     DB.query('SELECT * FROM request where usersid', (error,results) => {
@@ -142,8 +139,27 @@ router.get('/requestQ', authenticateController.is_LoggedIn_As_Admin, (req,res) =
 }else{
     res.redirect('login')
 }
-} )
-////////////////////////////////////////////////////////
+}) //admins view of the request Queue.
+
+router.get('/donorRQ', authenticateController.is_LoggedIn_As_Donor, (req,res) => {
+    if(req.user){
+        DB.query('SELECT * FROM request where usersid', (error, results) => {
+            res.render('donorRQ', {request: results})
+        })
+    }else{
+        res.redirect('login')
+    }
+}) //Donors view of the request Q.
+
+router.get('/recepPQ', authenticateController.is_LoggedIn_As_Recipient, (req,res) => {
+    if(req.user){
+        DB.query('SELECT * FROM pledge where usersid', (eroor,results) => {
+            res.render('recepPQ', {pledge: results})
+        })
+    }else{
+        res.redirect('login')
+    }
+}) //Recepient view of the PledgeQ
 
 
 module.exports = router

@@ -30,16 +30,8 @@
                 <div class="card-body">
                     <form action = "/pledge/pledge" method = "POST">
 
-                            <label for ="id">Your ID#</label>
-                                <select id = "id" class = "form-control" id = "id" name = "id" readonly>
-                                    <option> {{user.id}}</option>    
-                                </select>
-            <br>   
-                         <label for ="UserName">Your UserName</label>
-                                <select id = "UserName" class = "form-control" id = "UserName" name = "UserName" readonly>
-                                    <option> {{user.UserName}}</option>    
-                                </select>
-            <br>
+                            <input type = "hidden" id = "id" name = "id" value = {{user.id}}>
+                            <input type = "hidden" id = "UserName" name = "UserName" value = {{user.UserName}}> 
                         <div class="form-group">
                             <label for="pledge">Pledge Title</label>
                             <input type="pledge" class="form-control" id="pledge" name= "pledge" placeholder = 'Pledge Title Here' required>
@@ -80,12 +72,7 @@
                                             <option> VT </option><option> VA </option><option> WA </option><option> WV </option>
                                             <option> WI </option><option> WY </option>
                                         </select>
-                <br>
-                                    <label for ="zipcode">Your Zipcode</label>
-                                <select id = "zipcode" class = "form-control" id = "zipcode" name = "zipcode" readonly>
-                                    <option> {{user.zipcode}}</option>    
-                                </select>
-           
+                                <input type = "hidden" id = "zipcode" name = "zipcode" value = {{user.zipcode}}>           
                 </div>                            
                                     <button type="submit" class="btn2 btn-primary">Pledge</button>
                 </form>

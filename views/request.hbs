@@ -31,16 +31,9 @@
                     <form action = "/request/request" method = "POST">
                         <div class="form-group">
 
-                             <label for ="id">Your ID#</label>
-                                <select id = "id" class = "form-control" id = "id" name = "id" readonly>
-                                    <option> {{user.id}}</option>    
-                                </select>
-            <br>
-                            <label for ="UserName">Your UserName</label>
-                                <select id = "UserName" class = "form-control" id = "UserName" name = "UserName" readonly>
-                                    <option> {{user.UserName}}</option>    
-                                </select>
-            <br>
+                            <input type = "hidden" id = "id" name = "id" value = {{user.id}}>
+                            <input type = "hidden" id = "UserName" name = "UserName" value = {{user.UserName}}> 
+
                             <label for="request">Request Title</label>
                             <input type="request" class="form-control" id="request" name= "request" placeholder = 'Pledge Request Here' required>
                         </div>
@@ -80,11 +73,8 @@
                                             <option> WI </option><option> WY </option>
                                         </select>
             <br>
-                                        <label for ="zipcode">Your Zipcode</label>
-                                <select id = "zipcode" class = "form-control" id = "zipcode" name = "zipcode" readonly>
-                                    <option> {{user.zipcode}}</option>    
-                                </select>
-           
+            <input type = "hidden" id = "zipcode" name = "zipcode" value = {{user.zipcode}}>
+  
                 </div>                            
                                     <button type="submit" class="btn2 btn-primary">Request</button>
                 </form>
