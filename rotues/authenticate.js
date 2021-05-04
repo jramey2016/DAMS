@@ -24,5 +24,10 @@ router.post('/editRequest', authenticateController.editRequest) //conotroller fo
 
 router.post('/searchrecepPQ', authenticateController.searchrecepPQ) //controller to search pledgeQ on the recipient side
 
-router.post('/searchdonorQ', authenticateController.searchdonorQ)
+router.post('/searchdonorQ', authenticateController.searchdonorQ) //controller to search donorQ on the admin side.
+
+router.post('/searchdonorRQ', authenticateController.searchdonorRQ) //controoler to search requestQ on the donor side.
+
+router.post('/searchrequestQ',authenticateController.searchrequestQ) //controller to search requestQ on the admin side.
+
 module.exports = router

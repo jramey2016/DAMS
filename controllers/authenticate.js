@@ -270,6 +270,7 @@ exports.searchrecepPQ = (req,res) =>{ //search for the pledge screen (Recipient 
         const {pledgezip} = req.body
         console.log(pledgezip)
         DB.query('SELECT * FROM pledge WHERE pledgezip = ?', [pledgezip], (error,results) => {
+            console.log(results)
             res.render('recepPQ', {pledge:results})
         })
     }catch(error){
@@ -277,12 +278,39 @@ exports.searchrecepPQ = (req,res) =>{ //search for the pledge screen (Recipient 
     }
 }
 
-exports.searchdonorQ = (req,res) =>{
+exports.searchdonorQ = (req,res) => {
     try{
         const {pledgezip} = req.body
         console.log(pledgezip)
         DB.query('SELECT * FROM pledge WHERE pledgezip = ?', [pledgezip], (error,results) => {
-            res.render('recepPQ', {pledge:results})
+            console.log(results)
+            res.render('donorQ', {pledge:results})
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.searchdonorRQ = (req,res) => {
+    try{
+        const {requestzip} = req.body
+        console.log(requestzip)
+        DB.query('SELECT * FROM request WHERE requestzip = ?', [requestzip], (error,results) =>{
+            console.log(results)
+            res.render('donorRQ', {request: results})
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.searchrequestQ = (req,res) => {
+    try{
+        const {requestzip} = req.body
+        console.log(requestzip)
+        DB.query('SELECT * FROM request WHERE requestzip = ?', [requestzip], (error,results) =>{
+            console.log(results)
+            res.render('requestQ', {request: results})
         })
     }catch(error){
         console.log(error)

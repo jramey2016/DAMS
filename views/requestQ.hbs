@@ -18,13 +18,17 @@
         <ul>
             <li><a href="/admin"> Profile </a></li>
             <li><a href= "/createEvent">Create an Event</a></li>
-            <li><a href="donorQ/"> Donor Queue </a></li>
+            <li><a href="/donorQ"> Donor Queue </a></li>
             <li><a href="../authenticate/logout"> Logout </a></li>
         </ul>
     </nav>
 
     <div class="container mt-4">
-       
+       <form action = "/authenticate/searchrequestQ" method = "POST">
+           <label for = "requestzip">Search Request</label>
+           <input type = "search" id = "requestzip" id = "requestzip" name = "requestzip" placeholder="Enter Zip">
+           <button type = "GO" class = "btn btn-primary">Search</button>
+       </form>
             {{#each request}}
                  <div class = "card-body">
                      <div class = "card">
@@ -35,7 +39,7 @@
                              <h5 class = "card-title"> Pledge Title: {{this.pledge}} </h5>
                              <h5 class = "card-title"> Pledge Type: {{this.type}}</h5>
                              <h5 class = "card-title"> Pledge Item: {{this.item}}, Qty: {{this.quantity}}</h5>
-                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
+                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
                          </div>
                           <h8 class = "card-footer text-center"> Event ID: {{this.id}} </h5>
                      </div>

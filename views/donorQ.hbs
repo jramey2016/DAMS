@@ -18,16 +18,16 @@
         <ul>
             <li><a href="/admin"> Profile </a></li>
             <li><a href= "/createEvent">Create an Event</a></li>
-            <li><a href="/donorRQ"> Request Queue </a></li>
+            <li><a href="/requestQ"> Request Queue </a></li>
             <li><a href="../authenticate/logout"> Logout </a></li>
         </ul>
     </nav>
 
     <div class="container mt-4">
-            <form action = "/authenticate/searchrecepPQ" method = "POST">
+            <form action = "/authenticate/searchdonorQ" method = "POST">
             <label for = "pledgezip">Search Pledge Zip:</label>
             <input type = "search" id = "pledgezip" id = "pledgezip" name = "pledgezip" placeholder="Enter Zip">
-            <button style = "margin:10px" type = "GO" class = "btn btn-primary">Search</button>
+            <button type = "GO" class = "btn btn-primary">Search</button>
             </form>
             
             {{#each pledge}}
