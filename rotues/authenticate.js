@@ -30,5 +30,7 @@ router.post('/searchdonorRQ', authenticateController.searchdonorRQ) //controoler
 
 router.post('/searchrequestQ',authenticateController.searchrequestQ) //controller to search requestQ on the admin side.
 
-router.post('/deleteRA', authenticateController.deleteRA) //controller for admin to delete a request
+router.post('/deleteRA', authenticateController.deleteRA) //controller for admin to delete a request.
+
+router.post('/deletePA', authenticateController.deletePA) //controller for admin to delete a pledge.
 module.exports = router

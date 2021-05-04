@@ -275,6 +275,21 @@ exports.deleteRA = (req,res) => { //ability for admin to delete a request
     }
 }
 
+exports.deletePA = (req,res) =>{ //admin can delete a pledge
+    try{
+        const{id} = req.body
+        DB.query('DELETE from pledge where id = ?',[id], async(error,results) =>{
+            if(error){
+                console.log(error)
+            }else{
+                res.redirect('/donorQ')
+            }
+        })
+    } catch (error){
+        console.log(error)
+    }
+}
+
 exports.editRequest = (req,res) => { //where a user can edit thier request
     const {id} = req.body
     console.log(id)

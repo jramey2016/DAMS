@@ -43,6 +43,17 @@
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
                          </div>
                           <h8 class = "card-footer text-center"> Event ID: {{this.id}} </h5>
+
+
+                          <form action = "#" method = "POST">
+                          <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                          <button type = "edit" class = "btn btn-primary">Pair to Recipient</button>   
+                          </form>
+                          <br>
+                          <form action = "/authenticate/deletePA" method = "POST">
+                          <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                          <button type = "delete" class = "btn btn-primary">Delete Pledge</button>
+                          </form>
                      </div>
                  </div>
                                     
