@@ -204,12 +204,12 @@ exports.logout = async (req,res) => {
     res.status(200).redirect('/'); //redirect to the homepage.
 }
 
-exports.updateEvent = async(req,res) => {
+exports.updateEvent = async(req,res) => { //admin allowed to modify an event
     var id = req.body.id
     console.log(id)
 }
 
-exports.delEvent = async(req,res) => {
+exports.delEvent = async(req,res) => { //admin delete event
     try{
         const {id} = req.body
         DB.query('DELETE from events WHERE id = ?', [id], async(error,results) =>{
@@ -224,7 +224,7 @@ exports.delEvent = async(req,res) => {
     }
 }
 
-exports.delPledge = async (req,res) =>{
+exports.delPledge = async (req,res) =>{ //donor to delete their pledge
   try{
       const{id} = req.body
       DB.query('DELETE from pledge WHERE id = ?', [id], async(error,results) =>{
@@ -239,7 +239,7 @@ exports.delPledge = async (req,res) =>{
   }
 }
 
-exports.updatePledge = async(req,res) => {
+exports.updatePledge = async(req,res) => { // for donor to update thier pledge
     var id = req.body.id
     console.log(id)
 
@@ -256,6 +256,21 @@ exports.delRequest = (req,res) => { //where a user can delete thier request
             }
         })
     }catch(error){
+        console.log(error)
+    }
+}
+
+exports.deleteRA = (req,res) => { //ability for admin to delete a request
+    try{
+        const{id} = req.body
+        DB.query('DELETE from request where id = ?',[id], async(error,results) => {
+            if(error){
+                console.log(error)
+            }else{
+                res.redirect('/requestQ')
+            }
+        })
+    }catch (error){
         console.log(error)
     }
 }

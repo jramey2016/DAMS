@@ -36,12 +36,23 @@
                          <div class = "card-body">
                              <h3 class = "card-title">User: {{this.UserName}}</h3>
                              <hr class="my-4">
-                             <h5 class = "card-title"> Pledge Title: {{this.pledge}} </h5>
+                             <h5 class = "card-title"> Pledge Title: {{this.request}} </h5>
                              <h5 class = "card-title"> Pledge Type: {{this.type}}</h5>
                              <h5 class = "card-title"> Pledge Item: {{this.item}}, Qty: {{this.quantity}}</h5>
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
                          </div>
                           <h8 class = "card-footer text-center"> Event ID: {{this.id}} </h5>
+                        
+
+                          <form action = "#" method = "POST">
+                          <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                          <button type = "edit" class = "btn btn-primary">Pair to Donor</button>
+                          </form>
+                          <br>
+                          <form action = "/authenticate/deleteRA" method = "POST">
+                          <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                          <button type = "delete" class = "btn btn-primary">Delete Request</button>
+                          </form>
                      </div>
                  </div>
                                     
