@@ -24,7 +24,12 @@
     </nav>
 
     <div class="container mt-4">
-       
+            <form action = "/authenticate/searchrecepPQ" method = "POST">
+            <label for = "pledgezip">Search Pledge Zip:</label>
+            <input type = "search" id = "pledgezip" id = "pledgezip" name = "pledgezip" placeholder="Enter Zip">
+            <button style = "margin:10px" type = "GO" class = "btn btn-primary">Search</button>
+            </form>
+            
             {{#each pledge}}
                  <div class = "card-body">
                      <div class = "card">

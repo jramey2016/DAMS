@@ -245,7 +245,7 @@ exports.updatePledge = async(req,res) => {
 
 }
 
-exports.delRequest = (req,res) => {
+exports.delRequest = (req,res) => { //where a user can delete thier request 
     try{
         const{id} = req.body
         DB.query('DELETE from request WHERE id = ?', [id], async(error,results) =>{
@@ -260,7 +260,31 @@ exports.delRequest = (req,res) => {
     }
 }
 
-exports.editRequest = (req,res) => {
+exports.editRequest = (req,res) => { //where a user can edit thier request
     const {id} = req.body
     console.log(id)
+}
+
+exports.searchrecepPQ = (req,res) =>{ //search for the pledge screen (Recipient side)
+    try{
+        const {pledgezip} = req.body
+        console.log(pledgezip)
+        DB.query('SELECT * FROM pledge WHERE pledgezip = ?', [pledgezip], (error,results) => {
+            res.render('recepPQ', {pledge:results})
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.searchdonorQ = (req,res) =>{
+    try{
+        const {pledgezip} = req.body
+        console.log(pledgezip)
+        DB.query('SELECT * FROM pledge WHERE pledgezip = ?', [pledgezip], (error,results) => {
+            res.render('recepPQ', {pledge:results})
+        })
+    }catch(error){
+        console.log(error)
+    }
 }

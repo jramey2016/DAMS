@@ -22,4 +22,7 @@ router.post('/delRequest', authenticateController.delRequest) //controller for r
 
 router.post('/editRequest', authenticateController.editRequest) //conotroller for recipient to edit thier request
 
+router.post('/searchrecepPQ', authenticateController.searchrecepPQ) //controller to search pledgeQ on the recipient side
+
+router.post('/searchdonorQ', authenticateController.searchdonorQ)
 module.exports = router
