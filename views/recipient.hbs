@@ -73,7 +73,18 @@
                         <h6 class = "card-title">Item Quantity: {{this.quantity}}</h6>
                         <h6 class = "card-title">State: {{this.state}} City: {{this.city}} Zipcode: {{this.requestzip}} </h6>
                         </div>
-                        <h6 class = "card-footer text-center"></h6>  
+                        <h6 class = "card-footer text-center">Request ID: {{this.id}}</h6>
+
+                        <form action = "/authenticate/editRequest" method = "POST">
+                        <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                        <button type = "edit" class = "btn btn-primary">Edit Request</button> 
+                        </form>
+                        
+                        <form action = "/authenticate/delRequest" method = "POST">
+                        <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                        <button type = "delete" class = "btn btn-primary">Delete Request</button>
+                        </form>
+
                         </div> 
         <br>              
                 {{/each}}

@@ -28,6 +28,7 @@
        
             {{#each event}}
                  <div class = "card-body">
+                     
                      <div class = "card">
                          <div class = "card-header"></div>
                          <div class = "card-body">
@@ -38,14 +39,25 @@
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.eventzip}}</h5>
                               <hr class="my-4">
                             <h6 class = "card-title">Description: {{this.description}}</h5>
+                          
                          </div>
-                          <h8 class = "card-footer text-center"> Event ID: {{this.id}} </h5>
+                
+                        <h8 class ="card-footer text-center">Event ID: {{this.id}}</h8>
+                         <form action = "/authenticate/updateEvent" method = "POST">
+                         <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                         <button type="submit" class="btn btn-primary">Edit Event</button>
+                         </form>                      
+                        <form action = "/authenticate/delEvent" method = "POST">
+                        <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                        <button type = "delete" class = "btn btn-primary">Delete Event</button>   
+                        </form>
+                        
                      </div>
                  </div>
                                     
             {{/each}}
             
-            
+             
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </body>

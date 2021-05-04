@@ -10,4 +10,16 @@ router.get('/logout', authenticateController.logout) //logout controller
 
 router.post('/forgot', authenticateController.forgot) //controller for forgotten password
 
+router.post('/updateEvent', authenticateController.updateEvent) //controller to update an event
+
+router.post('/delEvent', authenticateController.delEvent) //controller for when a user would like to delte an event
+
+router.post('/delPledge', authenticateController.delPledge) //controller for donor to delete thier pledge
+
+router.post('/updatePledge', authenticateController.updatePledge) //controller for donor to update thier pledge
+
+router.post('/delRequest', authenticateController.delRequest) //controller for recipient to delete thier request
+
+router.post('/editRequest', authenticateController.editRequest) //conotroller for recipient to edit thier request
+
 module.exports = router

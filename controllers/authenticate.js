@@ -203,3 +203,64 @@ exports.logout = async (req,res) => {
     });
     res.status(200).redirect('/'); //redirect to the homepage.
 }
+
+exports.updateEvent = async(req,res) => {
+    var id = req.body.id
+    console.log(id)
+}
+
+exports.delEvent = async(req,res) => {
+    try{
+        const {id} = req.body
+        DB.query('DELETE from events WHERE id = ?', [id], async(error,results) =>{
+            if(error){
+                console.log(error)
+            }else{
+                res.redirect('/viewEvent')
+            }
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.delPledge = async (req,res) =>{
+  try{
+      const{id} = req.body
+      DB.query('DELETE from pledge WHERE id = ?', [id], async(error,results) =>{
+          if(error){
+              console.log(error)
+          } else{
+              res.redirect('/donor')
+          }
+      })
+  }catch(error){
+      console.log(error)
+  }
+}
+
+exports.updatePledge = async(req,res) => {
+    var id = req.body.id
+    console.log(id)
+
+}
+
+exports.delRequest = (req,res) => {
+    try{
+        const{id} = req.body
+        DB.query('DELETE from request WHERE id = ?', [id], async(error,results) =>{
+            if(error){
+                console.log(error)
+            } else{
+                res.redirect('/recipient')
+            }
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.editRequest = (req,res) => {
+    const {id} = req.body
+    console.log(id)
+}
