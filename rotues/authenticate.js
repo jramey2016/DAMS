@@ -12,6 +12,8 @@ router.post('/forgot', authenticateController.forgot) //controller for forgotten
 
 router.post('/updateEvent', authenticateController.updateEvent) //controller to update an event
 
+router.post('/updateEventConfirm', authenticateController.updateEventConfirm) //controller to complete updating an event.
+
 router.post('/delEvent', authenticateController.delEvent) //controller for when a user would like to delte an event
 
 router.post('/delPledge', authenticateController.delPledge) //controller for donor to delete thier pledge
@@ -37,5 +39,6 @@ router.post('/acceptPledge', authenticateController.acceptPledge) //for recipien
 router.post('/donorConnect', authenticateController.donorConnect) //for the donor to accept the request. 
 
 router.post('/acceptRequest', authenticateController.acceptRequest) //for the donor to accept the request.
+
 
 module.exports = router

@@ -29,13 +29,13 @@
                 Event Update Form
             </div>
                 <div class="card-body">
-                    <form action = "#" method = "POST">
-                        <div class="form-group">
-                            {{#each events}}
-                            <label for="EventName">Name of the Event</label>
-                            <input for="EventName" class="form-control" id="EventName" name= "EventName" value = {{EventName}} required>
-                            {{/each}}
-                        </div>
+                    <form action = "/authenticate/updateEventConfirm" method = "POST">
+                        {{#each events}}
+                                <div class="form-group">
+                                    <label for="description">Name of the Event</label>
+                                    <textarea class="form-control" id="EventName" name = "EventName" rows="1" placeholder= "Limit to 100 characters">{{this.EventName}}</textarea>
+                                {{/each}}
+                                </div>
             <br>
                             <label for ="type">Select the Type of Event</label>
                                 <select id = "type" class = "form-control" id = "type" name = "type" required >
@@ -50,10 +50,12 @@
                                     {{/each}}
             <br>
 
-                                     {{#each events}}
-                                    <label for="city">Locations City/Town</label>
-                                        <input type="city" class="form-control" id="city" name = "city" placeholder= "Enter the City/Town" value = {{city}} required>
-                                    {{/each}}
+                                    {{#each events}}
+                                <div class="form-group">
+                                    <label for="description">City/Town</label>
+                                    <textarea class="form-control" id="city" name = "city" rows="1" placeholder= "Limit to 100 characters">{{this.city}}</textarea>
+                                {{/each}}
+                                </div>
             <br>
                                 {{#each events}}
                                 <div class="form-group">
@@ -84,6 +86,7 @@
                                 {{#each events}}
                                     <label for="eventzip">Enter Locations Zipcode</label>
                                         <input type="eventzip" class="form-control" id="eventzip" name = "eventzip" placeholder= "Enter the Locations Zipcode" value = {{eventzip}} required>
+                                        <input type = "hidden" class = "form-control" id = "id" name = "id" value = {{id}}>
                                 {{/each}}
                 </div>
 

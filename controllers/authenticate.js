@@ -204,12 +204,25 @@ exports.logout = async (req,res) => {
     res.status(200).redirect('/'); //redirect to the homepage.
 }
 
-exports.updateEvent = async(req,res) => { //admin allowed to modify an event
+exports.updateEvent = async(req,res) => { //admin allowed to modify an event will redirect them to the edit page to update the event
     var id = req.body.id
     console.log(id)
     DB.query('SELECT * FROM events WHERE id =?',[id],async(error,results) =>{
         console.log(results)
         res.render('editEvent', {events: results})
+    })
+}//direct user to edit event page.
+
+exports.updateEventConfirm = async (req,res) => {
+    const{id, EventName, type, date, city, description, state, eventzip} = req.body
+    DB.query('UPDATE events set EventName = ?, type = ?, date =?, city = ?, description = ?, state =?, eventzip = ? WHERE id = ?', [EventName, type, date, city, description,state,eventzip, id], async (error,results) =>{
+        DB.query('SELECT * FROM events', (error,results2) => {
+            if(error){
+                console.log(error)
+            }else{
+                res.render('viewEvent', {event: results2})
+            }
+        })
     })
 }
 
