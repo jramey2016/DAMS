@@ -505,3 +505,6 @@ exports.confirmR2D = (req,res) =>{
     })
 }
 
+exports.confirmD2R = (req,res) => {
+    
+}
