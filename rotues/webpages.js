@@ -154,8 +154,12 @@ router.get('/requestQ', authenticateController.is_LoggedIn_As_Admin, (req,res) =
 
 router.get('/donorRQ', authenticateController.is_LoggedIn_As_Donor, (req,res) => {
     if(req.user){
+        console.log(req.user.id)
         DB.query('SELECT * FROM request where usersid', (error, results) => {
-            res.render('donorRQ', {request: results, user: req.user})
+            DB.query('SELECT * FROM users WHERE id = ?', req.user.id, (error,results2) =>{
+                console.log(results2)
+                res.render('donorRQ', {request: results, user: results2})
+            })
         })
     }else{
         res.redirect('login')
@@ -164,8 +168,12 @@ router.get('/donorRQ', authenticateController.is_LoggedIn_As_Donor, (req,res) =>
 
 router.get('/recepPQ', authenticateController.is_LoggedIn_As_Recipient, (req,res) => {
     if(req.user){
-        DB.query('SELECT * FROM pledge where usersid', (eroor,results) => {
-            res.render('recepPQ', {pledge: results, user:req.user})
+        console.log(req.user.id)
+        DB.query('SELECT * FROM pledge where usersid', (error,results) => {
+            DB.query('SELECT * FROM users where id = ?', req.user.id, (error,results2) =>{
+                console.log(results2)
+                res.render('recepPQ', {pledge: results, user:results2})
+            })
         })
     }else{
         res.redirect('login')

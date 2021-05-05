@@ -45,14 +45,15 @@
                           <h8 class = "card-footer text-center"> Pledge ID: {{this.id}} </h5>
                           <form action = "/authenticate/recepConnect" method = "POST">
                           <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
-                          <input type = "Uid" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{user.id}}>
+                          {{#each ../user}}
+                          <input type = "hidden" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{id}}>
+                          {{/each}}
                           <button type = "connect" class = "btn btn-primary">Accept Pledge</button>
                           </form>
                      </div>
                  </div>                 
             {{/each}}
-        
-           
+      
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </body>

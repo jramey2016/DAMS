@@ -59,7 +59,9 @@
 
                         <form action = "/authenticate/acceptPledge" method = "POST">
                         <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
-                        <input type = "Uid" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{user.id}}>
+                        {{#each ../user}}
+                        <input type = "hidden" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{id}}>
+                        {{/each}}
                         <input type = "hidden" id = "user" name = "user" value = {{this.UserName}}>
                         <input type = "hidden" id = "pledge" name = "pledge" value = {{this.pledge}}>
                         <input type = "hidden" id = "type" name = "type" value = {{this.type}}>
