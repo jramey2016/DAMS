@@ -24,7 +24,7 @@ router.post('/searchrecepPQ', authenticateController.searchrecepPQ) //controller
 
 router.post('/searchdonorQ', authenticateController.searchdonorQ) //controller to search donorQ on the admin side.
 
-router.post('/searchdonorRQ', authenticateController.searchdonorRQ) //controoler to search requestQ on the donor side.
+router.post('/searchdonorRQ', authenticateController.searchdonorRQ) //controller to search requestQ on the donor side.
 
 router.post('/searchrequestQ',authenticateController.searchrequestQ) //controller to search requestQ on the admin side.
 
@@ -42,5 +42,9 @@ router.post('/acceptRequest', authenticateController.acceptRequest) //for the do
 
 router.post('/pairR2D', authenticateController.pairR2D) //for the admin to pair a recipient to a donor.
 
+router.post('/completeR2D', authenticateController.completeR2D) //for the admin to complete the pair connection.
+
 router.post('/pairD2R', authenticateController.pairD2R) //for the admin to pair a donor to a recipient.
+
+
 module.exports = router

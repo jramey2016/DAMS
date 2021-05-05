@@ -422,16 +422,44 @@ exports.acceptRequest = (req,res) => {
 exports.pairR2D = (req,res) => {
     try{
         const{rid, Uid} = req.body
+        console.log("HERE")
         console.log(rid + " " + Uid)
+        DB.query('SELECT * FROM request WHERE id = ?', rid, (error,results) =>{
+            DB.query('SELECT * FROM users WHERE id = ?', Uid, (error,results2) =>{
+                DB.query('SELECT * FROM pledge WHERE usersid', (error,results3) =>{
+                    if(error){
+                        console.log(error)
+                    }else{
+                    res.render('pairR2D',{request: results, user: results2, pledge: results3})
+                    }
+                })
+            })
+        })
     }catch(error){
         console.log(error)
     }
+}
+
+exports.completeR2D = (req,res) => {
+    const{rid, Uid, Did} = req.body
+    console.log(rid)
+    console.log(Uid)
+    console.log(Did)
+
+    DB.query('SELECT * FROM request where id = ?', rid, (errors,results) =>{
+        DB.query('SELECT * FROM users WHERE Uid = ?', Uid, (error,results2) =>{
+            DB.query('SELECT * FROM pledge WHERE id = ?', Did, (error,results3) =>{
+                res.render('completeR2D', {request: results, user: results2, pledge: results3})
+            })
+        })
+    })
 }
 
 exports.pairD2R = (req,res) => {
     try{
         const{rid,Uid} = req.body
         console.log(rid + " " + Uid)
+
     }catch(error){
         console.log(error)
     }
