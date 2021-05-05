@@ -440,6 +440,28 @@ exports.pairR2D = (req,res) => {
     }
 }
 
+exports.pairD2R = (req,res) => {
+    try{
+        const{Did,Uid} = req.body
+        console.log(Did + " " + Uid)
+
+       DB.query('SELECT * FROM pledge WHERE id = ?', Did, (error,results) =>{
+           DB.query('SELECT * FROM users WHERE id = ?', Uid, (error,results2) =>{
+               DB.query('SELECT * FROM request WHERE usersid', (error,results3) => {
+                   console.log(results3)
+                   if(error){
+                       console.log(error)
+                   }else{
+                       res.render('pairD2R',{pledge: results, user: results2, request: results3})
+                   }
+               })
+           })
+       })
+    }catch(error){
+        console.log(error)
+    }
+}
+
 exports.completeR2D = (req,res) => {
     const{rid, Uid, Did} = req.body
     console.log(rid)
@@ -455,6 +477,10 @@ exports.completeR2D = (req,res) => {
     })
 }
 
+exports.completeD2R = (req,res) => {
+    
+}
+
 exports.confirmR2D = (req,res) =>{
     const {rid,id,Did,UserName,pledge,type,item,quantity,state,city,zipcode} = req.body
    console.log(rid)
@@ -468,12 +494,3 @@ exports.confirmR2D = (req,res) =>{
     })
 }
 
-exports.pairD2R = (req,res) => {
-    try{
-        const{rid,Uid} = req.body
-        console.log(rid + " " + Uid)
-
-    }catch(error){
-        console.log(error)
-    }
-}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,23 +19,25 @@
             <li><a href= "/admin"> Profile </a></li>
             <li><a href="/createEvent"> Create an Event </a></li>
             <li><a href="/viewEvent"> Event Page </a></li>
-            <li><a href="/donorQ"> Donor Queue </a></li>
+            <li><a href="/requestQ"> Request Queue </a></li>
             <li><a href="/authenticate/logout"> Logout </a></li>
         </ul>
     </nav>
-    
+      
+    <div class = "container mt-4">
+
     <div class="container mt-4">
         
-        {{#each request}}
+        {{#each pledge}}
         <div class = "card-body">
             <div class = "card">
                 <div class = "card-header">Recipient Chosen:</div>
                 <div class = "card-body">
                     <h3 class = "card-title">User: {{this.UserName}}</h3>
-                             <h3 class = "card-title">Request ID: {{this.id}}</h3>
+                             <h3 class = "card-title">Pledge ID: {{this.id}}</h3>
                              <hr class="my-4">
-                             <h5 class = "card-title"> Request Title: {{this.request}} </h5>
-                             <h5 class = "card-title"> Request Type: {{this.type}}</h5>
+                             <h5 class = "card-title"> Pledge Title: {{this.request}} </h5>
+                             <h5 class = "card-title"> Pledge Type: {{this.type}}</h5>
                              <h5 class = "card-title"> Item: {{this.item}}, Qty: {{this.quantity}}</h5>
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
                              </div>
@@ -45,21 +47,22 @@
         <hr class="my-4">
         <div class="container mt-4"></div>
                 <div class = "card-header">
-                    Choose A Donor To Pair With recipient 
+                    Choose A Recipient to pair with Donor
                 </div>
     </div>
-        {{#each pledge}}
+
+     {{#each request}}
         <div class = "card-body">
             <div class = "card">
                 <div class = "card-header"></div>
                 <div class = "card-body">
                     <h3 class = "card-title">User: {{this.UserName}}</h3>
-                             <h3 class = "card-title">Pledge ID: {{this.id}}</h3>
+                             <h3 class = "card-title">Request ID: {{this.id}}</h3>
                              <hr class="my-4">
-                             <h5 class = "card-title"> Pledge Title: {{this.pledge}} </h5>
-                             <h5 class = "card-title"> Pledge Type: {{this.type}}</h5>
-                             <h5 class = "card-title"> pledge Item: {{this.item}}, Qty: {{this.quantity}}</h5>
-                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
+                             <h5 class = "card-title"> Request Title: {{this.pledge}} </h5>
+                             <h5 class = "card-title"> Request Type: {{this.type}}</h5>
+                             <h5 class = "card-title"> Request Item: {{this.item}}, Qty: {{this.quantity}}</h5>
+                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
                              </div>
                              <form action = "/authenticate/completeR2D" method = "POST">
                              {{#each ../request}}
@@ -75,6 +78,6 @@
                 </div>
         {{/each}}
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -48,5 +48,5 @@ router.post('/confirmR2D', authenticateController.confirmR2D) //for the adming t
 
 router.post('/pairD2R', authenticateController.pairD2R) //for the admin to pair a donor to a recipient.
 
-
+router.post('/completeD2R', authenticateController.completeD2R)
 module.exports = router

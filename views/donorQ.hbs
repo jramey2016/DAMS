@@ -47,9 +47,9 @@
 
 
                           <form action = "/authenticate/pairD2R" method = "POST">
-                          <input type = "hidden" id = "rid" name = "rid" value = {{this.id}}>
+                          <input type = "hidden" id = "Did" name = "Did" value = {{this.id}}>
                           {{#each ../user}}
-                          <input type = "text" id = "Uid" name = "Uid" value = {{id}}>
+                          <input type = "hidden" id = "Uid" name = "Uid" value = {{id}}>
                           {{/each}}
                           <button type = "edit" class = "btn btn-primary">Pair to Recipient</button>   
                           </form>
