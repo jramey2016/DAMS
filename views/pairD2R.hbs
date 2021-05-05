@@ -39,7 +39,7 @@
                              <h5 class = "card-title"> Pledge Title: {{this.request}} </h5>
                              <h5 class = "card-title"> Pledge Type: {{this.type}}</h5>
                              <h5 class = "card-title"> Item: {{this.item}}, Qty: {{this.quantity}}</h5>
-                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
+                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
                              </div>
                 </div> 
         {{/each}}
@@ -52,20 +52,20 @@
     </div>
 
      {{#each request}}
-        <div class = "card-body">
+       <div class = "card-body">
             <div class = "card">
                 <div class = "card-header"></div>
                 <div class = "card-body">
                     <h3 class = "card-title">User: {{this.UserName}}</h3>
-                             <h3 class = "card-title">Request ID: {{this.id}}</h3>
+                             <h3 class = "card-title">Pledge ID: {{this.id}}</h3>
                              <hr class="my-4">
-                             <h5 class = "card-title"> Request Title: {{this.pledge}} </h5>
-                             <h5 class = "card-title"> Request Type: {{this.type}}</h5>
-                             <h5 class = "card-title"> Request Item: {{this.item}}, Qty: {{this.quantity}}</h5>
+                             <h5 class = "card-title"> Pledge Title: {{this.pledge}} </h5>
+                             <h5 class = "card-title"> Pledge Type: {{this.type}}</h5>
+                             <h5 class = "card-title"> pledge Item: {{this.item}}, Qty: {{this.quantity}}</h5>
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
                              </div>
-                             <form action = "/authenticate/completeR2D" method = "POST">
-                             {{#each ../request}}
+                             <form action = "/authenticate/completeD2R" method = "POST">
+                             {{#each ../pledge}}
                              <input type = "hidden" id = "rid" name = "rid" value = {{id}}>
                              {{/each}}
                              {{#each ../user}}

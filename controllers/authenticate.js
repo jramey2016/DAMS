@@ -478,7 +478,18 @@ exports.completeR2D = (req,res) => {
 }
 
 exports.completeD2R = (req,res) => {
-    
+    const{rid,Uid,Did} = req.body
+    console.log(rid)
+    console.log(Uid)
+    console.log(Did)
+
+    DB.query('SELECT * FROM pledge where id =?', rid, (errors,results) => {
+        DB.query('SELECT * FROM users WHERE Uid = ?', Uid, (error,results2) =>{
+            DB.query('SELECT * FROM pledge WHERE id = ?', Did, (error,results3) => {
+                res.render('completeD2R', {pledge: results, user: results2, pledge: results3})
+            })
+        })
+    })
 }
 
 exports.confirmR2D = (req,res) =>{
