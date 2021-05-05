@@ -484,9 +484,14 @@ exports.completeD2R = (req,res) => {
     console.log(Did)
 
     DB.query('SELECT * FROM pledge where id =?', rid, (errors,results) => {
-        DB.query('SELECT * FROM users WHERE Uid = ?', Uid, (error,results2) =>{
-            DB.query('SELECT * FROM pledge WHERE id = ?', Did, (error,results3) => {
-                res.render('completeD2R', {pledge: results, user: results2, pledge: results3})
+        DB.query('SELECT * FROM users WHERE id = ?', Uid, (error,results2) =>{
+            DB.query('SELECT * FROM request WHERE id = ?', Did, (error,results3) => {
+                console.log(results)
+                console.log("ttttt")
+                console.log(results2)
+                console.log("ttttt")
+                console.log(results3)
+                res.render('completeD2R', {pledge: results, user: results2, request: results3})
             })
         })
     })
@@ -506,5 +511,5 @@ exports.confirmR2D = (req,res) =>{
 }
 
 exports.confirmD2R = (req,res) => {
-    
+
 }
