@@ -207,12 +207,16 @@ exports.logout = async (req,res) => {
 exports.updateEvent = async(req,res) => { //admin allowed to modify an event
     var id = req.body.id
     console.log(id)
+    DB.query('SELECT * FROM events WHERE id =?',[id],async(error,results) =>{
+        console.log(results)
+        res.render('editEvent', {events: results})
+    })
 }
 
 exports.delEvent = async(req,res) => { //admin delete event
     try{
         const {id} = req.body
-        DB.query('DELETE from events WHERE id = ?', [id], async(error,results) =>{
+        DB.query('DELETE FROM events WHERE id = ?', [id], async(error,results) =>{
             if(error){
                 console.log(error)
             }else{

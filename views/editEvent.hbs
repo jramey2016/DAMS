@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Edit Event</title>
+</head>
+<body style = "background-color: rgb(255, 255, 255); text-align: center">
+    <nav>
+        <div class = "logo" id = "logo">
+            <a href= "/" class = "logo">
+            <img src = "/DisasterReliefUiowaOldGold-06.png" alt = "DAMS Logo"/>
+            </a>
+        </div>
+        <ul>
+            <li><a href= "/admin"> Profile </a></li>
+            <li><a href="/createEvent"> Create An Event </a></li>
+            <li><a href="/donorQ"> Donor Queue </a></li>
+            <li><a href="/requestQ"> Request Queue </a></li>
+            <li><a href="/authenticate/logout"> Logout </a></li>
+        </ul>
+    </nav>
+         <div class="container mt-5">
+        <div class="card">
+            <div class = "card-header">
+                Event Update Form
+            </div>
+                <div class="card-body">
+                    <form action = "#" method = "POST">
+                        <div class="form-group">
+                            {{#each events}}
+                            <label for="EventName">Name of the Event</label>
+                            <input for="EventName" class="form-control" id="EventName" name= "EventName" value = {{EventName}} required>
+                            {{/each}}
+                        </div>
+            <br>
+                            <label for ="type">Select the Type of Event</label>
+                                <select id = "type" class = "form-control" id = "type" name = "type" required >
+                                    <option> Fundraiser </option>
+                                    <option> Natural Disaster </option>
+                                    <option> Pandemic Relief</option>
+                                    <option> Voulunteer Oppurtuinity</option>   
+                                </select>
+            <br>                    {{#each events}}
+                                    <label for="date">Events Date</label>
+                                        <input type="date" class="form-control" id="date" name = "date" value = {{date}} required>
+                                    {{/each}}
+            <br>
+
+                                     {{#each events}}
+                                    <label for="city">Locations City/Town</label>
+                                        <input type="city" class="form-control" id="city" name = "city" placeholder= "Enter the City/Town" value = {{city}} required>
+                                    {{/each}}
+            <br>
+                                {{#each events}}
+                                <div class="form-group">
+                                    <label for="description">Brief Description</label>
+                                    <textarea class="form-control" id="description" name = "description" rows="3" placeholder= "Limit to 100 characters">{{this.description}}</textarea>
+                                {{/each}}
+                                </div>
+            <br>
+                                {{#each events}}
+                                    <label for ="state">Select State</label>
+                                        <select id = "state" class = "form-control" id = "state" name = "state" value = {{this.state}}>
+                                            <option> AL </option><option> AK </option><option> AZ </option><option> AR </option>
+                                            <option> CA </option><option> CO </option><option> CT </option>
+                                            <option> DE </option><option> FL </option><option> GA </option><option> HI </option>
+                                            <option> ID </option><option> IL </option><option> IN </option><option> IA </option>
+                                            <option> KS </option><option> KY </option><option> LA </option><option> ME </option>
+                                            <option> MD </option><option> MD </option><option> MA </option><option> MI </option>
+                                            <option> MN </option><option> MS </option><option> MO </option><option> MT </option>
+                                            <option> NE </option><option> NV </option><option> NH </option><option> NY </option>
+                                            <option> NC </option><option> ND </option><option> OH </option><option> OK </option>
+                                            <option> OR </option><option> PA </option><option> RI </option><option> SC </option>
+                                            <option> SD </option><option> TN </option><option> TX </option><option> UT </option>
+                                            <option> VT </option><option> VA </option><option> WA </option><option> WV </option>
+                                            <option> WI </option><option> WY </option>
+                                        </select>
+                                {{/each}}
+            <br>
+                                {{#each events}}
+                                    <label for="eventzip">Enter Locations Zipcode</label>
+                                        <input type="eventzip" class="form-control" id="eventzip" name = "eventzip" placeholder= "Enter the Locations Zipcode" value = {{eventzip}} required>
+                                {{/each}}
+                </div>
+
+       
+                                    <button type="submit" class="btn2 btn-primary">Update</button>
+                </form>
+                                    <div class = "card-footer text muted"></div>
+        </div>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+</body>
+</html>
