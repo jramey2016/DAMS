@@ -82,6 +82,30 @@
                         </div> 
         <br>              
                 {{/each}}
+                <hr class="my-4">
+                <div class = "card text-center">
+                <div class = "card-header">
+                    {{user.UserName}}'s' Accepted Requests:
+                </div>
+                </div>
+            {{#each request}}
+                <div class = "col-12">
+                    <div class ="card text-left">
+                        <div class = "card-header">
+                            {{this.UserName}}'s Request
+                        </div>
+                        <h4 class = "card-title">Pledge Title: {{this.title}}</h4>
+                        <h4 class = "card-title">Request Type: {{this.type}}</h4>
+                        <hr class="my-4">
+                       <h6 class = "card-title">Item: {{this.item}}</h6>
+                        <h6 class = "card-title">Item Quantity: {{this.quantity}}</h6>
+                        <h6 class = "card-title">State: {{this.state}} City: {{this.city}} Zipcode: {{this.zipcode}} </h6>
+                        <h6 class = "card-footer text-center"></h6>  
+                    </div>
+                </div>
+                </div>
+                <br>
+            {{/each}}
             </div>
         </div>          
     </div>

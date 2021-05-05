@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Donor Home</title>
+</head>
+<body style = "background-color: rgb(255, 255, 255); text-align: left">
+    <nav>
+         <div class = "logo" id = "logo">
+            <a href= "/" class = "logo">
+            <img src = "/DisasterReliefUiowaOldGold-06.png" alt = "DAMS Logo"/>
+            </a>
+        </div>
+        <ul>
+            <li><a href= "/pledge"> Make a Pledge </a></li>
+            <li><a href = "/donorRQ">View Request</a></li>
+            <li><a href="/authenticate/logout"> Logout </a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-4">
+    
+        {{#each user}}
+                <div class = "col-12">
+                        <div class = "card text-left">
+                            <div class = "card-header">
+                                You are {{this.UserName}}
+                            </div>
+                            <div class = "card-body">
+                                <h4 class = "card-title"> Your ID is: {{this.id}}</h4>
+                                <h4 class = "card-title"> Your email: {{this.email}}</h4>
+                                <h4 class = "card-title"> Your zipcode: {{this.zipcode}}</h4>
+                            </div>
+                        </div>
+                </div>
+        {{/each}}
+        <br>
+        <br>
+        <h5>You are connecting with:</h5>
+        {{#each request}}
+                <div class ="col-12">
+                    <div class = "card text-left">
+                        <div class = "card-header">
+                            {{this.UserName}}'s Pledge:
+                        </div>
+                        <div class = "card-body">
+                        <h4 class = "card-title"> Request Title: {{this.request}}</h4>
+                        <h5 class= "card-title">Request Type: {{this.type}} </h5>
+                        <hr class="my-4">
+                        <h6 class = "card-title">Item: {{this.item}}</h6>
+                        <h6 class = "card-title">Item Quantity: {{this.quantity}}</h6>
+                        <h6 class = "card-title">State: {{this.state}} City: {{this.city}} Zipcode: {{this.requestzip}} </h6>
+                        </div>
+                        <h6 class = "card-footer text-center">Pledge ID: {{this.id}}</h6>
+
+                        <form action = "/authenticate/acceptRequest" method = "POST">
+                        <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                        <input type = "Uid" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{user.id}}>
+                        <input type = "hidden" id = "user" name = "user" value = {{this.UserName}}>
+                        <input type = "hidden" id = "request" name = "request" value = {{this.request}}>
+                        <input type = "hidden" id = "type" name = "type" value = {{this.type}}>
+                        <input type = "hidden" id = "item" name = "item" value = {{this.item}}>
+                        <input type = "hidden" id = "quan" name = "quan" value = {{this.quantity}}>
+                        <input type = "hidden" id = "state" name = "state" value = {{this.state}}>
+                        <input type = "hidden" id = "city" name = "city" value = {{this.city}}>
+                        <input type = "hidden" id = "zipcode" name = "zipcode" value = {{this.requestzip}}>
+                        <button type = "confirm" class = "btn btn-primary">Confirm?</button>
+                        </form>  
+                        
+                        </div> 
+        <br>              
+                {{/each}}
+            </div>
+        </div>          
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+</body>
+</html>

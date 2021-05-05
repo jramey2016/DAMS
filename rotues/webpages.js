@@ -42,11 +42,17 @@ router.get('/admin', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
 router.get('/donor',authenticateController.is_LoggedIn_As_Donor, (req,res) => { //donor's home page, middleware will be used on all of the users accounts dispatch cookies and verify role.
     if(req.user){
         var id_val = req.user.id
+ 
     DB.query('SELECT * FROM pledge WHERE usersid = ?', id_val, (error, results) => { //get specific information pertainning to that user.
-        res.render('donor', {
-            user: req.user,
-            pledge: results
-          })
+        DB.query('SELECT * FROM d2rconnect WHERE Did = ?', id_val, (error,results2) =>{
+           console.log(results2)
+            res.render('donor', {
+                user: req.user,
+                pledge: results,
+                request: results2
+              })
+        })
+        
     })}else{
         res.redirect('login')
     }
@@ -149,7 +155,7 @@ router.get('/requestQ', authenticateController.is_LoggedIn_As_Admin, (req,res) =
 router.get('/donorRQ', authenticateController.is_LoggedIn_As_Donor, (req,res) => {
     if(req.user){
         DB.query('SELECT * FROM request where usersid', (error, results) => {
-            res.render('donorRQ', {request: results})
+            res.render('donorRQ', {request: results, user: req.user})
         })
     }else{
         res.redirect('login')

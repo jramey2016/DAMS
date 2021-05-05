@@ -356,16 +356,6 @@ exports.recepConnect = (req,res) => { //recipient accepting a pledge.
 exports.acceptPledge = (req,res) => {
     try{
         const{id, Uid, user, pledge, type, item, quan, state, city, zipcode} = req.body
-        console.log(id)
-        console.log(Uid)
-        console.log(user)
-        console.log(pledge)
-        console.log(type)
-        console.log(item)
-        console.log(quan)
-        console.log(state)
-        console.log(city)
-        console.log(zipcode)
         DB.query('INSERT INTO r2dconnect SET?', {Uid: Uid, Did: id, UserName: user, title: pledge, type: type, item: item, quantity: quan, state: state, city: city, zipcode: zipcode}, (error,result)=> {
             if(error){
                 console.log(error)
@@ -377,4 +367,37 @@ exports.acceptPledge = (req,res) => {
         console.log(error)
     }
 
+}
+
+exports.donorConnect = (req,res) => {
+    try{
+        const{id,Uid} = req.body
+        console.log(Uid)
+        console.log(id)
+        DB.query('SELECT * FROM request WHERE id = ?', [id], (error,results) =>{
+            DB.query('SELECT * FROM users WHERE id = ?',[Uid], (error,results2) =>{
+                console.log(results)
+                console.log(results2)
+                res.render('confirmrequest', {request:results, user:results2})
+            })
+        })
+    }catch(error){
+        console.log(results)
+    }
+}
+
+exports.acceptRequest = (req,res) => {
+    try{
+        const{id, Uid, user, request, type, item, quan, state, city, zipcode} = req.body
+        console.log(id + Uid + user + request + type + item + quan + state + city + zipcode)
+        DB.query('INSERT INTO d2rconnect SET?', {Uid: Uid, Did: id, UserName: user, title: request, type: type, item: item, quantity: quan, state: state, city: city, zipcode: zipcode}, (error,result) =>{
+            if(error){
+                console.log(error)
+            }else{
+                res.redirect('/donor')
+            }
+        })
+    }catch(error){
+        console.log(error)
+    }
 }

@@ -28,6 +28,8 @@
            <input type = "search" id ="requestzip" id = "requestzip" name = "requestzip" placeholder="Enter Zip">
            <button type = "GO" class = "btn btn-primary">Search</button>
             </form>
+            <label for = "Uid">Your UserID is: {{user.id}}</label>
+
             {{#each request}}
                  <div class = "card-body">
                      <div class = "card">
@@ -41,6 +43,11 @@
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
                          </div>
                           <h8 class = "card-footer text-center"> Request ID: {{this.id}} </h5>
+                          <form action = "/authenticate/donorConnect" method = "POST">
+                          <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                          <input type = "Uid" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{user.id}}>
+                          <button type = "connect" class = "btn btn-primary">Accept Request</button>
+                          </form>
                      </div>
                  </div>
                                     

@@ -33,4 +33,9 @@ router.post('/deletePA', authenticateController.deletePA) //controller for admin
 router.post('/recepConnect', authenticateController.recepConnect) //receipient is connecting to a donors pledge.
 
 router.post('/acceptPledge', authenticateController.acceptPledge) //for recipient to accept the pledge.
+
+router.post('/donorConnect', authenticateController.donorConnect) //for the donor to accept the request. 
+
+router.post('/acceptRequest', authenticateController.acceptRequest) //for the donor to accept the request.
+
 module.exports = router
