@@ -44,6 +44,8 @@ router.post('/pairR2D', authenticateController.pairR2D) //for the admin to pair 
 
 router.post('/completeR2D', authenticateController.completeR2D) //for the admin to complete the pair connection.
 
+router.post('/confirmR2D', authenticateController.confirmR2D) //for the adming to send final confirmation
+
 router.post('/pairD2R', authenticateController.pairD2R) //for the admin to pair a donor to a recipient.
 
 

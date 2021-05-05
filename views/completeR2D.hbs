@@ -1,1 +1,82 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>PairR2D</title>
+</head>
+<body style = "background-color: rgb(255, 255, 255); text-align: left">
+    <nav>
+        <div class = "logo" id = "logo">
+            <a href= "/" class = "logo">
+            <img src = "/DisasterReliefUiowaOldGold-06.png" alt = "DAMS Logo"/>
+            </a>
+        </div>
+        <ul>
+            <li><a href= "/admin"> Profile </a></li>
+            <li><a href="/createEvent"> Create an Event </a></li>
+            <li><a href="/viewEvent"> Event Page </a></li>
+            <li><a href="/donorQ"> Donor Queue </a></li>
+            <li><a href="/authenticate/logout"> Logout </a></li>
+        </ul>
+    </nav>
+    
+    <div class="container mt-4">
+        
+        {{#each request}}
+        <div class = "card-body">
+            <div class = "card">
+                <div class = "card-header">Recipient Chosen:</div>
+                <div class = "card-body">
+                    <h3 class = "card-title">User: {{this.UserName}}</h3>
+                             <h3 class = "card-title">Request ID: {{this.id}}</h3>
+                             <hr class="my-4">
+                             <h5 class = "card-title"> Request Title: {{this.request}} </h5>
+                             <h5 class = "card-title"> Request Type: {{this.type}}</h5>
+                             <h5 class = "card-title"> Request Item: {{this.item}}, Qty: {{this.quantity}}</h5>
+                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
+                             </div>
+                </div> 
+        {{/each}}
+
+        <br>
+        </div>
+        {{#each pledge}}
+        <div class = "card-body">
+            <div class = "card">
+                <div class = "card-header"> Donor Chosen:</div>
+                <div class = "card-body">
+                    <h3 class = "card-title">User: {{this.UserName}}</h3>
+                             <h3 class = "card-title">Pledge ID: {{this.id}}</h3>
+                             <hr class="my-4">
+                             <h5 class = "card-title"> Pledge Title: {{this.pledge}} </h5>
+                             <h5 class = "card-title"> Pledge Type: {{this.type}}</h5>
+                             <h5 class = "card-title"> pledge Item: {{this.item}}, Qty: {{this.quantity}}</h5>
+                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
+                             </div>
+                             <form action = "/authenticate/confirmR2D" method = "POST">
+                             {{#each ../request}}
+                             <input type = "hidden" id = "rid" name = "rid" value = {{usersid}}>
+                             {{/each}}
+                             <input type = "hidden" id = "id" name = "id" value = {{this.usersid}}>
+                             <input type = "hidden" id = "pledge" name = "pledge" value = {{this.pledge}}>
+                             <input type = "hidden" id = "UserName" name = "UserName" value = {{this.UserName}}>
+                             <input type = "hidden" id = "type" name = "type" value = {{this.type}}>
+                             <input type = "hidden" id = "item" name = "item" value = {{this.item}}>
+                             <input type = "hidden" id = "quantity" name = "quantity" value = {{this.quantity}}>
+                             <input type = "hidden" id = "state" name = "state" value = {{this.state}}>
+                             <input type = "hidden" id = "city" name = "city" value = {{this.city}}>
+                             <input type = "hidden" id = "zipcode" name = "zipcode" value = {{this.pledgezip}}>
+                             <input type = "hidden" id = "Did" name = "Did" value = {{this.id}}>
+                             <button type = "confirm" class = "btn btn-primary">Confirm?</button>
+                             </form>
+                </div> 
+                </div>
+        {{/each}}
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+</body>
+</html>

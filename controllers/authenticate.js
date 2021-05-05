@@ -455,6 +455,19 @@ exports.completeR2D = (req,res) => {
     })
 }
 
+exports.confirmR2D = (req,res) =>{
+    const {rid,id,Did,UserName,pledge,type,item,quantity,state,city,zipcode} = req.body
+   console.log(rid)
+   console.log(id)
+    DB.query('INSERT INTO r2dconnect SET?', {Uid: rid, Did: Did, UserName: UserName, title: pledge, type: type, item: item, quantity: quantity, state: state, city: city, zipcode: zipcode}, (error,results) => {
+            if(error){
+                console.log(error)
+            }else{
+                res.redirect('/admin')
+            }  
+    })
+}
+
 exports.pairD2R = (req,res) => {
     try{
         const{rid,Uid} = req.body
