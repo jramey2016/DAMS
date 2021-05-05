@@ -133,9 +133,12 @@ router.get('/change', (req,res) => {
 router.get('/donorQ', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
 if(req.user){
     DB.query('SELECT * FROM pledge where usersid', (error, results) => {
-        if(req.user){
-            res.render('donorQ', {pledge: results})
-        }
+        const id = results[0].usersid
+        console.log(id)
+        DB.query('SELECT * FROM users WHERE id = ?', id, (error,results2) =>{
+            console.log(results2)
+            res.render('donorQ', {pledge: results, user: results2})
+        })
     } )
 }else{
     res.redirect('login')
@@ -145,7 +148,12 @@ if(req.user){
 router.get('/requestQ', authenticateController.is_LoggedIn_As_Admin, (req,res) => {
     if(req.user){
     DB.query('SELECT * FROM request where usersid', (error,results) => {
-            res.render('requestQ', {request: results}) 
+        const id = results[0].usersid
+        console.log(id)
+        DB.query('SELECT * FROM users WHERE id = ?', id, (error,results2) =>{
+            console.log(results2)
+            res.render('requestQ', {request: results, user: results2}) 
+        })
     })
 }else{
     res.redirect('login')

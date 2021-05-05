@@ -40,5 +40,7 @@ router.post('/donorConnect', authenticateController.donorConnect) //for the dono
 
 router.post('/acceptRequest', authenticateController.acceptRequest) //for the donor to accept the request.
 
+router.post('/pairR2D', authenticateController.pairR2D) //for the admin to pair a recipient to a donor.
 
+router.post('/pairD2R', authenticateController.pairD2R) //for the admin to pair a donor to a recipient.
 module.exports = router

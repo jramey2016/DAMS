@@ -418,3 +418,21 @@ exports.acceptRequest = (req,res) => {
         console.log(error)
     }
 }
+
+exports.pairR2D = (req,res) => {
+    try{
+        const{rid, Uid} = req.body
+        console.log(rid + " " + Uid)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.pairD2R = (req,res) => {
+    try{
+        const{rid,Uid} = req.body
+        console.log(rid + " " + Uid)
+    }catch(error){
+        console.log(error)
+    }
+}

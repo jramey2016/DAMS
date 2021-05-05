@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
-    <title>Current Events</title>
+    <title>Donor Queue</title>
 </head>
 <body style = "background-color: rgb(255, 255, 255); text-align: left">
     <nav>
@@ -18,6 +18,7 @@
         <ul>
             <li><a href="/admin"> Profile </a></li>
             <li><a href= "/createEvent">Create an Event</a></li>
+            <li><a href= "/viewEvent">Event Page</a></li>
             <li><a href="/requestQ"> Request Queue </a></li>
             <li><a href="../authenticate/logout"> Logout </a></li>
         </ul>
@@ -42,11 +43,14 @@
                              <h5 class = "card-title"> Pledge Item: {{this.item}}, Qty: {{this.quantity}}</h5>
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
                          </div>
-                          <h8 class = "card-footer text-center"> Event ID: {{this.id}} </h5>
+                          <h8 class = "card-footer text-center"> Pledge ID: {{this.id}} </h5>
 
 
-                          <form action = "#" method = "POST">
-                          <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                          <form action = "/authenticate/pairD2R" method = "POST">
+                          <input type = "hidden" id = "rid" name = "rid" value = {{this.id}}>
+                          {{#each ../user}}
+                          <input type = "text" id = "Uid" name = "Uid" value = {{id}}>
+                          {{/each}}
                           <button type = "edit" class = "btn btn-primary">Pair to Recipient</button>   
                           </form>
                           <br>
