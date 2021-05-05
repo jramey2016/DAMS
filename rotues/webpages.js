@@ -55,11 +55,16 @@ router.get('/donor',authenticateController.is_LoggedIn_As_Donor, (req,res) => { 
 router.get('/recipient', authenticateController.is_LoggedIn_As_Recipient, (req,res) =>{ //recipiends homepage
     if(req.user){
         var id_val = req.user.id
+        
     DB.query('SELECT * FROM request WHERE usersid = ?', id_val, (error,results) =>{ //get specific request information pertaining to that user
+       DB.query('SELECT * FROM r2dconnect WHERE Uid = ?', id_val, (error,results2) =>{
+           console.log(results2)
         res.render('recipient', {
             user: req.user,
-            pledge: results
+            request: results,
+            pledge: results2
     })
+       })
     })} else{
         res.redirect('login')
     }
@@ -154,7 +159,7 @@ router.get('/donorRQ', authenticateController.is_LoggedIn_As_Donor, (req,res) =>
 router.get('/recepPQ', authenticateController.is_LoggedIn_As_Recipient, (req,res) => {
     if(req.user){
         DB.query('SELECT * FROM pledge where usersid', (eroor,results) => {
-            res.render('recepPQ', {pledge: results})
+            res.render('recepPQ', {pledge: results, user:req.user})
         })
     }else{
         res.redirect('login')

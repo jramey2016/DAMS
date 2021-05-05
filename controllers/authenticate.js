@@ -239,12 +239,6 @@ exports.delPledge = async (req,res) =>{ //donor to delete their pledge
   }
 }
 
-exports.updatePledge = async(req,res) => { // for donor to update thier pledge
-    var id = req.body.id
-    console.log(id)
-
-}
-
 exports.delRequest = (req,res) => { //where a user can delete thier request 
     try{
         const{id} = req.body
@@ -290,10 +284,6 @@ exports.deletePA = (req,res) =>{ //admin can delete a pledge
     }
 }
 
-exports.editRequest = (req,res) => { //where a user can edit thier request
-    const {id} = req.body
-    console.log(id)
-}
 
 exports.searchrecepPQ = (req,res) =>{ //search for the pledge screen (Recipient side)
     try{
@@ -345,4 +335,46 @@ exports.searchrequestQ = (req,res) => {
     }catch(error){
         console.log(error)
     }
+}
+
+exports.recepConnect = (req,res) => { //recipient accepting a pledge.
+    try{
+        const{id,Uid} =req.body
+        console.log(Uid)
+        console.log(id)
+        DB.query('SELECT * FROM pledge WHERE id = ?', [id], (error,results) =>{
+            DB.query('SELECT * FROM users WHERE id = ?',[Uid], (error,results2) =>{
+                console.log(results2)
+                res.render('confirmpledge', {pledge:results, user:results2})
+            })
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+
+exports.acceptPledge = (req,res) => {
+    try{
+        const{id, Uid, user, pledge, type, item, quan, state, city, zipcode} = req.body
+        console.log(id)
+        console.log(Uid)
+        console.log(user)
+        console.log(pledge)
+        console.log(type)
+        console.log(item)
+        console.log(quan)
+        console.log(state)
+        console.log(city)
+        console.log(zipcode)
+        DB.query('INSERT INTO r2dconnect SET?', {Uid: Uid, Did: id, UserName: user, title: pledge, type: type, item: item, quantity: quan, state: state, city: city, zipcode: zipcode}, (error,result)=> {
+            if(error){
+                console.log(error)
+            }else{
+                res.redirect('/recipient')
+            }
+        })
+    }catch(error){
+        console.log(error)
+    }
+
 }

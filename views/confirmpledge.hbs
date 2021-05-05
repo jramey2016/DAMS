@@ -23,42 +23,24 @@
     </nav>
 
     <div class="container mt-4">
-        <div class = "row">
-            <div class = "col-4">
-                 <div class = "card">
-                      <div class = "card-header"></div>
-            <div class = "avatar-ctn">
-                <img src = "/DisasterReliefUiowaOldGold-07.png" class = "avatar" alt = "user pfp">
-            </div>
-        <div class = "card-body">
-            <h5 class = "card-title"> Hey {{user.UserName}}! </h5>
-                <p class = "card-text">Your role is a/an: {{user.role}}</p>
-                <p class = "card-text">Zipcode: {{user.zipcode}}</p>
-                <p class = "card-text">Email: {{user.email}}</p>
+    
+        {{#each user}}
+                <div class = "col-12">
+                        <div class = "card text-left">
+                            <div class = "card-header">
+                                You are {{this.UserName}}
+                            </div>
+                            <div class = "card-body">
+                                <h4 class = "card-title"> Your ID is: {{this.id}}</h4>
+                                <h4 class = "card-title"> Your email: {{this.email}}</h4>
+                                <h4 class = "card-title"> Your zipcode: {{this.zipcode}}</h4>
+                            </div>
+                        </div>
                 </div>
-                <div class = "card-footer text muted"></div>
-              </div>
-            </div>
-
-            <div class ="col-8">
-                <div class = "card text-left">
-                  <div class = "card-header">
-                      {{user.UserName}}'s Profile Page
-                    </div>  
-                    <div class = "card-body">
-                        <h5 class = "card-title"> Your Role As A {{user.role}} </h5>
-                        <p class = "card-text"> Our donor is for good sameritans who are keen to help. You may not be sure what is required to help assist those in need and where the need is located. With this role you will be able to search for requested items and pledge a donation in response. Any help you can offer will go along way in anothers recovery. </p>
-                    </div>
-                    <div class = "card-footer text-center">
-                      <h6>Your ID is: #{{user.id}}</h6>
-                    </div>
-                </div>
-        <br>    
-        <div class = "card text-center">
-                <div class = "card-header">
-                    {{user.UserName}}'s' Pledge Queue:
-                </div>
-         </div> 
+        {{/each}}
+        <br>
+        <br>
+        <h5>You are connecting with:</h5>
         {{#each pledge}}
                 <div class ="col-12">
                     <div class = "card text-left">
@@ -75,10 +57,20 @@
                         </div>
                         <h6 class = "card-footer text-center">Pledge ID: {{this.id}}</h6>
 
-                        <form action = "/authenticate/delPledge" method = "POST">
+                        <form action = "/authenticate/acceptPledge" method = "POST">
                         <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
-                        <button type = "delete" class = "btn btn-primary"> Delete Pledge</button> 
-                        </form>
+                        <input type = "Uid" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{user.id}}>
+                        <input type = "hidden" id = "user" name = "user" value = {{this.UserName}}>
+                        <input type = "hidden" id = "pledge" name = "pledge" value = {{this.pledge}}>
+                        <input type = "hidden" id = "type" name = "type" value = {{this.type}}>
+                        <input type = "hidden" id = "item" name = "item" value = {{this.item}}>
+                        <input type = "hidden" id = "quan" name = "quan" value = {{this.quantity}}>
+                        <input type = "hidden" id = "state" name = "state" value = {{this.state}}>
+                        <input type = "hidden" id = "city" name = "city" value = {{this.city}}>
+                        <input type = "hidden" id = "zipcode" name = "zipcode" value = {{this.pledgezip}}>
+                        <button type = "confirm" class = "btn btn-primary">Confirm?</button>
+                        </form>  
+                        
                         </div> 
         <br>              
                 {{/each}}

@@ -16,11 +16,7 @@ router.post('/delEvent', authenticateController.delEvent) //controller for when 
 
 router.post('/delPledge', authenticateController.delPledge) //controller for donor to delete thier pledge
 
-router.post('/updatePledge', authenticateController.updatePledge) //controller for donor to update thier pledge
-
 router.post('/delRequest', authenticateController.delRequest) //controller for recipient to delete thier request
-
-router.post('/editRequest', authenticateController.editRequest) //conotroller for recipient to edit thier request
 
 router.post('/searchrecepPQ', authenticateController.searchrecepPQ) //controller to search pledgeQ on the recipient side
 
@@ -33,4 +29,8 @@ router.post('/searchrequestQ',authenticateController.searchrequestQ) //controlle
 router.post('/deleteRA', authenticateController.deleteRA) //controller for admin to delete a request.
 
 router.post('/deletePA', authenticateController.deletePA) //controller for admin to delete a pledge.
+
+router.post('/recepConnect', authenticateController.recepConnect) //receipient is connecting to a donors pledge.
+
+router.post('/acceptPledge', authenticateController.acceptPledge) //for recipient to accept the pledge.
 module.exports = router

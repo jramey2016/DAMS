@@ -28,6 +28,8 @@
             <input type = "search" id = "pledgezip" id = "pledgezip" name = "pledgezip" placeholder="Enter Zip">
             <button type = "GO" class = "btn btn-primary">Search</button>
             </form>
+            <label for = "Uid">Your UserID is: {{user.id}}</label>
+        
             {{#each pledge}}
                  <div class = "card-body">
                      <div class = "card">
@@ -41,12 +43,16 @@
                              <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
                          </div>
                           <h8 class = "card-footer text-center"> Pledge ID: {{this.id}} </h5>
+                          <form action = "/authenticate/recepConnect" method = "POST">
+                          <input type = "hidden" id = "id" name = "id" value = {{this.id}}>
+                          <input type = "Uid" id = "Uid" name = "Uid" placeholder="Enter Your UserID" value = {{user.id}}>
+                          <button type = "connect" class = "btn btn-primary">Accept Pledge</button>
+                          </form>
                      </div>
-                 </div>
-                                    
+                 </div>                
             {{/each}}
             
-            
+           
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </body>
