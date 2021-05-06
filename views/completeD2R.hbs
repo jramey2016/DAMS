@@ -52,12 +52,12 @@
                     <h3 class = "card-title">User: {{this.UserName}}</h3>
                              <h3 class = "card-title">Request ID: {{this.id}}</h3>
                              <hr class="my-4">
-                             <h5 class = "card-title"> Request Title: {{this.pledge}} </h5>
+                             <h5 class = "card-title"> Request Title: {{this.request}} </h5>
                              <h5 class = "card-title"> Request Type: {{this.type}}</h5>
                              <h5 class = "card-title"> Request Item: {{this.item}}, Qty: {{this.quantity}}</h5>
-                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.pledgezip}}</h5>
+                             <h5 class = "card-title">State: {{this.state}}, City {{this.city}}, Zipcode: {{this.requestzip}}</h5>
                              </div>
-                             <form action = "/authenticate/confirmR2D" method = "POST">
+                             <form action = "/authenticate/confirmD2R" method = "POST">
                              {{#each ../pledge}}
                              <input type = "hidden" id = "rid" name = "rid" value = {{usersid}}>
                              {{/each}}
@@ -69,7 +69,7 @@
                              <input type = "hidden" id = "quantity" name = "quantity" value = {{this.quantity}}>
                              <input type = "hidden" id = "state" name = "state" value = {{this.state}}>
                              <input type = "hidden" id = "city" name = "city" value = {{this.city}}>
-                             <input type = "hidden" id = "zipcode" name = "zipcode" value = {{this.pledgezip}}>
+                             <input type = "hidden" id = "zipcode" name = "zipcode" value = {{this.requestzip}}>
                              <input type = "hidden" id = "Did" name = "Did" value = {{this.id}}>
                              <button type = "confirm" class = "btn btn-primary">Confirm?</button>
                              </form>
