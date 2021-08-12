@@ -14,7 +14,7 @@ Our donor is for good samaeitans who are keen to help. You may not be sure what 
 # Recipient:
 Our recipient role is for those affected by natures fury. Those who are in need of assistance will be able to find pledged resources such as; food, clothing, shelter, medicines, medical help, and various common consoumables. Anyone who has this role will also be able to submit request based on thier current needs for a donor to fufill.
 
-## Home Page
+## Home Web Page
 ![mainpage](https://user-images.githubusercontent.com/72533453/129276945-5fe866f0-2334-4072-bb10-6875be6b48c7.PNG)
-## Registration![Registration](https://user-images.githubusercontent.com/72533453/129277072-b4d3f2df-ad93-46ab-b562-39f8bccaffe9.PNG)
+
 
