@@ -1,6 +1,6 @@
 # DAMS (Disaster Assistance Management System)
 Who are We?
-The Disaster Assisstance Management System was developed by three Computer Science students; Oliver Rush, [Toby Northrup](https://github.com/TobyNorthrup) and Jordan Ramey who currently are attending the University Of Iowa.
+The Disaster Assisstance Management System was developed by three Computer Science students; [Oliver Rush](https://github.com/Oliverrush?tab=overview&from=2019-12-01&to=2019-12-31), [Toby Northrup](https://github.com/TobyNorthrup) and Jordan Ramey who currently are attending the University Of Iowa.
 
 # Project Scope:
 Saving a life is a noble cause. Natural diasters like COVID-19, floods, earthquakes, tornados, and hurricanes can happen unexpectandly and can claim many people lively hoods. Events like this can endanger peoples homes, pets, and assets. No matter your situation our virtual disaster assistance program can help connect you to those in need and those who are willing to help. The system will consist of three seperate roles; an admin, a donor, and a Recipient. Descriptions for each of these roles is outlined below.
