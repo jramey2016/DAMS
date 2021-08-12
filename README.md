@@ -1,4 +1,4 @@
-# DAMS
+# DAMS (Disaster Assistance Management System)
 Who are We?
 The Disaster Assisstance Management System was developed by three Computer Science students; Oliver Rush, Toby Northrup and Jordan Ramey who currently are attending the University Of Iowa.
 
